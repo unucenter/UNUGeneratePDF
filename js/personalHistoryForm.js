@@ -14,31 +14,6 @@
 		});
 
 
-        // render all the dependant
-        
-        var inputedRow = parseInt(  $('#visibilityCounterDependent').val() );
-      	var dependentRows = $("#visibilityCounterDependent").siblings('table').find("tbody tr");
-        // show them
-		for( var i=0; i <inputedRow; i++){
-			$(dependentRows[i]).show();
-		}
-
-        // render all the employment dependant
-        var inputedRow = parseInt(  $('#visibilityCounterEmployment').val() );
-      	var employmentRecord = $("#accordionJobs").find("div.panel-default");
-        // show them
-		for( var i=0; i <inputedRow; i++){
-			$(employmentRecord[i]).show();
-		}
-
-
-		$( '[data-phoenix-action]' ).on('click', function(e){
-          $('.form-control').phoenix( $(this).data('phoenix-action'));
-          e.preventDefault();
-          return e.stopPropagation();
-        });
-
-	/*
 		function addTableEntry( table ){
 			var tbody = $(table).find( 'tbody' );
 			var first_tr = $(tbody).find('tr:first-child');
@@ -73,85 +48,6 @@
 	   				event.preventDefault();
 	   			});
 	   	});
-	*/
-
-		$("#addJobEntry").on('click', function(event){ 
-			// change value of visibilitycoounter
-			var visibilityCounter = $("#accordionJobs").find( 'input.visibilityCounter' );
-
-			var visibilityValue = parseInt( $(visibilityCounter).val()  );
-			var visibilityNewValue = visibilityValue+1; 
-			$( visibilityCounter ).val( visibilityNewValue );
-			
-			var nextRecord = $("#accordionJobs").find('div.panel-default').eq( visibilityValue );
-			$(nextRecord).fadeIn("slow").show();
-
-			// save the new counter
-			$( visibilityCounter ).phoenix( 'save');
-			event.preventDefault();
-		});
-
-		$("#removeJobEntry").on('click', function(event){ 
-
-			// change value of visibilitycoounter
-			var visibilityCounter = $("#accordionJobs").find( 'input.visibilityCounter' );
-
-			var visibilityValue = parseInt( $(visibilityCounter).val()  );
-			var visibilityNewValue = visibilityValue -1;
-			$( visibilityCounter ).val( visibilityNewValue );
-			
-			$("#accordionJobs").find('div.panel-default').eq( visibilityNewValue ).fadeOut("slow", function(){$(this).hide();});
-
-			// empty all values within the tr
-			$("#accordionJobs").find('div.panel-default').eq( visibilityNewValue ).find('.form-control').each( function(){
-				var currentInput = $(this).find('input').val("");
-				$(currentInput).phoenix('save');
-			});
-			// save the new counter
-			$( visibilityCounter ).phoenix( 'save');
-
-			event.preventDefault();
-   		});
-
-
-		function showTableEntry( table ){
-
-			// change value of visibilitycoounter
-			var visibilityCounter = $(table).find( 'input.visibilityCounter' );
-
-			var visibilityValue = parseInt( $(visibilityCounter).val()  );
-			var visibilityNewValue = visibilityValue+1; 
-			$( visibilityCounter ).val( visibilityNewValue );
-			
-			var nextTr = $(table).find('tbody tr').eq( visibilityValue );
-			$(nextTr).fadeIn("slow").show();
-			$(nextTr).find("td:first-child input").focus();
-
-			// save the new counter
-			$( visibilityCounter ).phoenix( 'save');
-	   }
-
-
-		function hideTableEntry( table ){
-
-			// change value of visibilitycoounter
-			var visibilityCounter = $(table).find( 'input.visibilityCounter' );
-
-			var visibilityValue = parseInt( $(visibilityCounter).val()  );
-			var visibilityNewValue = visibilityValue -1;
-			$( visibilityCounter ).val( visibilityNewValue );
-			
-			$(table).find('tbody tr').eq( visibilityNewValue ).fadeOut("slow", function(){$(this).hide();});
-
-			// empty all values within the tr
-			$(table).find('tbody tr').eq( visibilityNewValue ).children().each( function(){
-				// the td
-				var currentInput = $(this).find('input').val("");
-				$(currentInput).phoenix('save');
-			});
-			// save the new counter
-			$( visibilityCounter ).phoenix( 'save');
-		}
 
 
 	   	$(".tableButton").each( function(){
@@ -168,7 +64,6 @@
 	   			});
 	   	});
 
-/*
 		$("#addJobEntry").on('click', function(event){ 
 				var jobContainer 	= $("#accordionJobs");
 				var all_jobs		= jobContainer.children();
@@ -216,7 +111,6 @@
 				event.preventDefault();
    		});
 
-*/
 
 
 		// global settings for the PDF rendering

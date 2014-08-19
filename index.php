@@ -195,23 +195,12 @@
 											          </tr>
 											        </thead>
 											        <tbody>
-											        	<?php
-														$counter = $i= 0;
-														$max = 15;?>
-
-														<?php while($i < $max): ?>
-															<?php if( $i != 0 ) : ?>
-																<tr style="display:none;">
-															<?php else : ?>
-																<tr>
-															<?php endif; ?>
-																<td><input id="dependentFirstName_<?php echo ${i} +1; ?>" type="text" class="form-control"></td>
-																<td><input id="dependentLastName_<?php echo ${i} +1; ?>" type="text" class="form-control"></td>
-																<td><input id="dependentBirthDate_<?php echo ${i} +1; ?>" type="text" placeholder="dd/mm/yyyy" class="form-control"></td>
-																<td><input id="dependentRelationship_<?php echo ${i} +1; ?>" type="text" class="form-control"></td>
-															</tr>
-															<?php $i++; ?>
-														<?php endwhile; ?>
+														<tr>
+															<td><input id="dependentFirstName" type="text" class="form-control"></td>
+															<td><input id="dependentLastName" type="text" class="form-control"></td>
+															<td><input id="dependentBirthDate" type="text" placeholder="dd/mm/yyyy" class="form-control"></td>
+															<td><input id="dependentRelationship" type="text" class="form-control"></td>
+														</tr>
 													</tbody>
 												  </table>
 												  <div class="tableButton" style="margin-top:-20px;margin-left:8px;position:relative;">
@@ -323,9 +312,9 @@
 													        </thead>
 													        <tbody>
 																<tr>
-																	<td><input type="text" class="form-control"></td>
-																	<td><input type="text" class="form-control"></td>
-																	<td><input type="text" class="form-control"></td>
+																	<td><input id="UNEmployedName" type="text" class="form-control"></td>
+																	<td><input id="UNEmployedRelationship" type="text" class="form-control"></td>
+																	<td><input id="UNEmployedOrganization" type="text" class="form-control"></td>
 																</tr>
 															</tbody>
 														  </table>
@@ -488,96 +477,85 @@
 
 											<div id="accordionJobs" class="panel-group"> <!-- all records -->
 												<input id="visibilityCounterEmployment" class="form-control visibilityCounter" style="display:none;" value="1"></input>
+												<div class="panel panel-default unuelement-job">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+																<a data-toggle="collapse" data-parent="#accordionJobs" href="#job">Record 1</a>
+														</h4>
+													</div><!-- .panel-heading -->
 
-											<?php
-												$counter = $i= 0;
-												$max = 10;?>
-												<?php while($i < $max): ?>
-													<?php if( $i != 0 ) : ?>
-														<div class="panel panel-default unuelement-job" style="display:none;"><!-- one particular job-->
-													<?php else : ?>
-														<div class="panel panel-default unuelement-job">
-													<?php endif; ?>
-															<div class="panel-heading">
-																<h4 class="panel-title">
-																		<a data-toggle="collapse" data-parent="#accordionJobs" href="#job_<?php echo ${i} +1;?>">Record <?php echo ($i+1) ?></a>
-																</h4>
-															</div><!-- .panel-heading -->
+													<div id="job" class="panel-collapse collapse in">
+											      		<div class="panel-body">
+															<div class="form-group">
+																<label for="jobFrom" class="col-sm-2 control-label">From</label>
+																<div class="col-sm-10">
+																	<input type="text" placeholder="mm/yyyy" class="form-control" id="jobFrom">
+																</div>
+															</div><!-- .form-group -->
+															<div class="form-group">
+																<label for="jobTo" class="col-sm-2 control-label">To</label>
+																<div class="col-sm-10">
+																	<input type="text" placeholder="mm/yyyy" class="form-control" id="jobTo">
+																</div>
+															</div><!-- .form-group -->
+															<div class="form-group">
+																<label for="salaryStart" class="col-sm-2 control-label">Starting salary (year)</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control" id="salaryStart">
+																</div>
+															</div><!-- .form-group -->
+															<div class="form-group">
+																<label for="salaryFinal" class="col-sm-2 control-label">Final salary (year)</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control" id="salaryFinal">
+																</div>
+															</div><!-- .form-group -->
+															<div class="form-group">
+																<label for="jobTitle" class="col-sm-2 control-label">Exact title of your post</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control" id="jobTitle">
+																</div>
+															</div><!-- .form-group -->
+															<div class="form-group">
+																<label for="jobEmployer" class="col-sm-2 control-label">Employer name and address</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control" id="jobEmployer">
+																</div>
+															</div><!-- .form-group -->
+															<div class="form-group">
+																<label for="jobEmployerBusiness" class="col-sm-2 control-label">Type of business</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control" id="jobEmployerBusiness">
+																</div>
+															</div><!-- .form-group -->
+															<div class="form-group">
+																<label for="jobSupervisor" class="col-sm-2 control-label">Name of supervisor</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control" id="jobSupervisor">
+																</div>
+															</div><!-- .form-group -->
+															<div class="form-group">
+																<label for="jobSupervised" class="col-sm-2 control-label">No. and type of employees supervised</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control" id="jobSupervised">
+																</div>
+															</div><!-- .form-group -->							
+															<div class="form-group">
+																<label for="jobDuties" class="col-sm-2 control-label">Duties and achievements</label>
+																<div class="col-sm-10">
+																	<textarea rows="4" class="form-control" id="jobDuties"></textarea>
+																</div>
+															</div><!-- .form-group -->
+															<div class="form-group">
+																<label for="jobDeparture" class="col-sm-2 control-label">Reason for leaving</label>
+																<div class="col-sm-10">
+																	<input type="text" class="form-control" id="jobDeparture">
+																</div>
+															</div><!-- .form-group -->
+														</div> <!-- .panel-body-->
 
-															<div id="job_<?php echo ${i} +1;?>" class="panel-collapse collapse in">
-													      		<div class="panel-body">
-																	<div class="form-group">
-																		<label for="jobFrom_<?php echo ${i} +1;?>" class="col-sm-2 control-label">From</label>
-																		<div class="col-sm-10">
-																			<input type="text" placeholder="mm/yyyy" class="form-control" id="jobFrom_<?php echo ${i} +1;?>">
-																		</div>
-																	</div><!-- .form-group -->
-																	<div class="form-group">
-																		<label for="jobTo_<?php echo ${i} +1; ?>" class="col-sm-2 control-label">To</label>
-																		<div class="col-sm-10">
-																			<input type="text" placeholder="mm/yyyy" class="form-control" id="jobTo_<?php echo ${i} +1;?>">
-																		</div>
-																	</div><!-- .form-group -->
-																	<div class="form-group">
-																		<label for="salaryStart_<?php echo ${i} +1;?>" class="col-sm-2 control-label">Starting salary (year)</label>
-																		<div class="col-sm-10">
-																			<input type="text" class="form-control" id="salaryStart_<?php echo ${i} +1;?>">
-																		</div>
-																	</div><!-- .form-group -->
-																	<div class="form-group">
-																		<label for="salaryFinal_<?php echo ${i} +1;?>" class="col-sm-2 control-label">Final salary (year)</label>
-																		<div class="col-sm-10">
-																			<input type="text" class="form-control" id="salaryFinal_<?php echo ${i} +1;?>">
-																		</div>
-																	</div><!-- .form-group -->
-																	<div class="form-group">
-																		<label for="jobTitle_<?php echo ${i} +1;?>" class="col-sm-2 control-label">Exact title of your post</label>
-																		<div class="col-sm-10">
-																			<input type="text" class="form-control" id="jobTitle_<?php echo ${i} +1;?>">
-																		</div>
-																	</div><!-- .form-group -->
-																	<div class="form-group">
-																		<label for="jobEmployer_<?php echo ${i} +1;?>" class="col-sm-2 control-label">Employer name and address</label>
-																		<div class="col-sm-10">
-																			<input type="text" class="form-control" id="jobEmployer_<?php echo ${i} +1;?>">
-																		</div>
-																	</div><!-- .form-group -->
-																	<div class="form-group">
-																		<label for="jobEmployerBusiness_<?php echo ${i} +1;?>" class="col-sm-2 control-label">Type of business</label>
-																		<div class="col-sm-10">
-																			<input type="text" class="form-control" id="jobEmployerBusiness_<?php echo ${i} +1;?>">
-																		</div>
-																	</div><!-- .form-group -->
-																	<div class="form-group">
-																		<label for="jobSupervisor_<?php echo ${i} +1;?>" class="col-sm-2 control-label">Name of supervisor</label>
-																		<div class="col-sm-10">
-																			<input type="text" class="form-control" id="jobSupervisor_<?php echo ${i} +1;?>">
-																		</div>
-																	</div><!-- .form-group -->
-																	<div class="form-group">
-																		<label for="jobSupervised_<?php echo ${i} +1;?>" class="col-sm-2 control-label">No. and type of employees supervised</label>
-																		<div class="col-sm-10">
-																			<input type="text" class="form-control" id="jobSupervised_<?php echo ${i} +1;?>">
-																		</div>
-																	</div><!-- .form-group -->							
-																	<div class="form-group">
-																		<label for="jobDuties_<?php echo ${i} +1;?>" class="col-sm-2 control-label">Duties and achievements</label>
-																		<div class="col-sm-10">
-																			<textarea rows="4" class="form-control" id="jobDuties_<?php echo ${i} +1;?>"></textarea>
-																		</div>
-																	</div><!-- .form-group -->
-																	<div class="form-group">
-																		<label for="jobDeparture_<?php echo ${i} +1;?>" class="col-sm-2 control-label">Reason for leaving</label>
-																		<div class="col-sm-10">
-																			<input type="text" class="form-control" id="jobDeparture_<?php echo ${i} +1;?>">
-																		</div>
-																	</div><!-- .form-group -->
-																</div> <!-- .panel-body-->
-
-															</div> <!-- .panel-collapse -->								
-														</div><!-- .panel-default -->
-													<?php $i++; ?>
-												<?php endwhile; ?>
+													</div> <!-- .panel-collapse -->								
+												</div><!-- .panel-default -->
 
 											</div><!-- .panel-group -->
 											<div>
@@ -593,11 +571,6 @@
 
 									</div> <!-- panel-collapse collapse -->
 								</div><!-- .panel .panel-default -->
-
-
-
-
-
 
 
 
@@ -628,9 +601,9 @@
 											        </thead>
 											        <tbody>
 														<tr>
-															<td><input type="text" class="form-control"></td>
-															<td><input type="text" class="form-control"></td>
-															<td><input type="text" class="form-control"></td>
+															<td><input id="referenceName" type="text" class="form-control"></td>
+															<td><input id="referenceAddress" type="text" class="form-control"></td>
+															<td><input id="referenceProfession" type="text" class="form-control"></td>
 														</tr>
 													</tbody>
 												  </table>
@@ -649,8 +622,6 @@
 									</div> <!-- panel-collapse collapse -->
 
 								</div><!-- .panel .panel-default -->
-
-
 
 
 
@@ -685,14 +656,13 @@
 						  		</div -->
 
 							<button id="pdfGenerate" style="margin-top: 10px;"class="button btn btn-primary">Generate pdf</button>
-							<button style="margin-top: 10px;"class="button btn btn-primary" data-phoenix-action="save">Save</button>
-							<button style="margin-top: 10px;"class="button btn btn-primary" data-phoenix-action="remove">Delete data</button>
 						</div>
 					</form>
 				</div>
         	</div>
         </div>
 		<script src='js/jquery-min.js'></script>
+		<script src='js/bootstrap.min.js'></script>
 		<script src="js/jspdf.debug.js"></script>
 		<script src="js/personalHistoryForm.js"></script>
 		<script src="js/document.js"></script>
