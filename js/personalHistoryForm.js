@@ -15,12 +15,16 @@
 
 
 		function addTableEntry( table ){
-			var tbody = $(table).find( 'tbody' );
-			var first_tr = $(tbody).find('tr:first-child');
-			var cloned   = $(first_tr).clone();
+			var tbody 			= $(table).find( 'tbody' );
+			var all_lines		= $(tbody).children();
+			var nb_records 		= all_lines.length;
+			var first_tr 		= all_lines[0];
+			var cloned   		= $(first_tr).clone();
+			
 			
 			// empty the inputs
 			$(cloned).find('input').each( function(){
+					$(this).attr( 'id',  $(this).attr('id') + nb_records);
 					$(this).val('');
 			});
 			$(cloned).hide().appendTo( tbody ).fadeIn("slow");

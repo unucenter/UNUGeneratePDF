@@ -184,7 +184,6 @@
 											<div class="form-group unuelement-table">
 												<label for="dependentFirstName_1" class="col-sm-2 control-label">Person fully upon you dependent</label>
 												<div class="col-sm-10 table-responsive">
-												  <input id="visibilityCounterDependent" class="form-control visibilityCounter" style="display:none;" value="1"></input>
 												  <table class="table">
 												    <thead>
 											          <tr>
@@ -472,19 +471,18 @@
 
 									<div id="collapseSeven" class="panel-collapse collapse">
 										<div class="panel-body">
-										<span class="glyphicon glyphicon-comment" data-toggle="tooltip" data-placement="left" title="Starting with your present employment, list in reverse order every position you have held. Include service in the armed forces."></span>
+											<span class="glyphicon glyphicon-comment" data-toggle="tooltip" data-placement="left" title="Starting with your present employment, list in reverse order every position you have held. Include service in the armed forces."></span>
 
 
 											<div id="accordionJobs" class="panel-group"> <!-- all records -->
-												<input id="visibilityCounterEmployment" class="form-control visibilityCounter" style="display:none;" value="1"></input>
 												<div class="panel panel-default unuelement-job">
 													<div class="panel-heading">
 														<h4 class="panel-title">
-																<a data-toggle="collapse" data-parent="#accordionJobs" href="#job">Record 1</a>
+																<a data-toggle="collapse" data-parent="#accordionJobs" href="#job_1">Record 1</a>
 														</h4>
 													</div><!-- .panel-heading -->
 
-													<div id="job" class="panel-collapse collapse in">
+													<div id="job_1" class="panel-collapse collapse in">
 											      		<div class="panel-body">
 															<div class="form-group">
 																<label for="jobFrom" class="col-sm-2 control-label">From</label>
@@ -553,11 +551,9 @@
 																</div>
 															</div><!-- .form-group -->
 														</div> <!-- .panel-body-->
-
 													</div> <!-- .panel-collapse -->								
 												</div><!-- .panel-default -->
-
-											</div><!-- .panel-group -->
+											</div> <!-- panel-group -->
 											<div>
 												<button id="addJobEntry">
 													<span class="glyphicon glyphicon-plus"></span>
@@ -567,10 +563,8 @@
 												</button>
 											</div>
 										</div> <!-- panel-body -->
-
-
-									</div> <!-- panel-collapse collapse -->
-								</div><!-- .panel .panel-default -->
+									</div><!-- .panel-collapse -->
+								</div><!-- .panel-default -->
 
 
 
