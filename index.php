@@ -7,26 +7,30 @@
 <html lang="en-US"> <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
-	    <!-- Title
-		================================================== -->
-		<title>Generation PDF</title>
-	    <!-- Title / End -->
-	    
-	    <!-- Meta
-		================================================== -->
+		<title>UNU PDF Generation</title>
 		<meta name="description" content="">
 	    <meta name="keywords" content="">
 		<meta name="author" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link rel='stylesheet' id='bootstrap-style-css'  href='css/bootstrap.css' type='text/css' media='all' />
 
-	    <!-- Typekit service -->
-    	<script type="text/javascript" src="//use.typekit.net/sqi6gts.js"></script>
-    	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     	<style type="text/css">
+    		@import url(http://fonts.googleapis.com/css?family=Lato:300);
     		body{
-				font-family:proxima-nova;
+				font-family: 'Lato', 'Helvetica', sans-serif;
+				color:#5f6f81;
     		}
+    		h4.panel-title{
+    			font-weight:bold;
+    		}
+   			label{
+   				color:#5f6f81;
+   			}
+   			.question{
+   				margin-top:15px;
+   				padding-bottom: 20px;
+   				border-bottom: 1.2px solid #ddd;
+   			}
     	</style>
 
 	</head>
@@ -34,6 +38,7 @@
 		<div class="container">
         	<div class="row">
             	<div class="col-md-12">
+            		<h1>Application form</h1>
 					<form id="applicationForm" class="form-horizontal">
 						<span class="glyphicon glyphicon-comment" data-toggle="tooltip" data-placement="left" title="Please answer each question clearly and completely. Read carefully and follow all directions. Please tick appropriate boxes."></span>
 
@@ -42,13 +47,13 @@
 								<div class="panel panel-default">
 									<div class="panel-heading">
 										<h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapse_1">
 												Position you are applying for
 											</a>
 										</h4>
 									</div><!-- .panel-heading -->
 
-									<div id="collapseOne" class="panel-collapse collapse in">
+									<div id="collapse_1" class="panel-collapse collapse in">
 						      			<div class="panel-body">
 											<div class="form-group unuelement-input">
 												<label for="positionRef" class="col-sm-2 control-label">Vacancy number</label>
@@ -71,13 +76,13 @@
 								<div class="panel panel-default">
 									<div class="panel-heading">
 										<h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapse_2">
 												Personal data
 											</a>
 										</h4>
 									</div><!-- .panel-heading -->
 
-									<div id="collapseTwo" class="panel-collapse collapse">
+									<div id="collapse_2" class="panel-collapse collapse">
 						      			<div class="panel-body">
 
 											<div class="form-group unuelement-input">
@@ -182,7 +187,7 @@
 												</div>
 											</div><!-- .form-group -->
 											<div class="form-group unuelement-table">
-												<label for="dependentFirstName_1" class="col-sm-2 control-label">Person fully upon you dependent</label>
+												<label for="dependentFirstName" class="col-sm-2 control-label">Person financially fully dependent on you</label>
 												<div class="col-sm-10 table-responsive">
 												  <table class="table">
 												    <thead>
@@ -206,14 +211,12 @@
 													<button class="addTableEntry">
 														<span class="glyphicon glyphicon-plus"></span>
 													</button>
-													<button class="removeTableEntry">
+													<button id="salutToma" class="removeTableEntry">
 														<span class="glyphicon glyphicon-minus"></span>
 													</button>
 												  </div>
 												</div><!-- table-responsive -->
 											</div><!-- .form-group -->
-
-
 										</div> <!-- panel-body -->
 									</div> <!-- panel-collapse collapse -->
 								</div><!-- .panel .panel-default -->
@@ -221,19 +224,18 @@
 
 
 
-
 								<div class="panel panel-default">
 									<div class="panel-heading">
 										<h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapse_3">
 												Questions
 											</a>
 										</h4>
 									</div><!-- .panel-heading -->
 
-									<div id="collapseFour" class="panel-collapse collapse">
+									<div id="collapse_3" class="panel-collapse collapse">
 						      			<div class="panel-body">
-												<div class="unuelement-question question col-sm-11" style="padding-bottom:5px;border-bottom:1.2px solid #ddd;">
+												<div class="unuelement-question question col-sm-11">
 													<p>Entry into United Nations University (UNU) service might entail assignment and travel to any area of the world in which United Nations University might have responsibilities. Have you any disabilities or other restrictions which might limit your prospective field of work or your ability to engage in travel?</p>
 													<label class="radio-inline">
 														<input class="radioToggle" type="radio" name="travelRestriction" value="yes"> Yes
@@ -247,7 +249,7 @@
 													</div>
 												</div><!-- .question -->
 
-												<div class="unuelement-question question col-sm-11" style="margin-top:15px;padding-bottom:5px;border-bottom:1.2px solid #ddd;">
+												<div class="unuelement-question question col-sm-11">
 													<p>Are you currently, or have you previously been, employed by the United Nations or a Common System agency?</p>
 													<label class="radio-inline">
 														<input class="radioToggle" type="radio" name="unEmployed" value="yes"> Yes
@@ -261,7 +263,7 @@
 													</div>
 												</div><!-- .question -->
 
-												<div class="unuelement-question question col-sm-11" style="margin-top:15px;padding-bottom:5px;border-bottom:1.2px solid #ddd;">
+												<div class="unuelement-question question col-sm-11">
 													<p>Have you taken up legal permanent residence status in any country other than that of your nationality?</p>
 													<label class="radio-inline">
 														<input class="radioToggle" type="radio" name="residence" value="yes"> Yes
@@ -276,7 +278,7 @@
 												</div><!-- .question -->
 
 
-												<div class="unuelement-question question col-sm-11" style="margin-top:15px;padding-bottom:5px;border-bottom:1.2px solid #ddd;">
+												<div class="unuelement-question question col-sm-11">
 													<p>Have you taken any steps towards changing your present nationality?</p>
 													<label class="radio-inline">
 														<input class="radioToggle" type="radio" name="changeNationality" value="yes"> Yes
@@ -291,7 +293,7 @@
 												</div><!-- .question -->
 
 
-												<div class="unuelement-question question col-sm-11" style="margin-top:15px;padding-bottom:5px;border-bottom:1.2px solid #ddd;">
+												<div class="unuelement-question question col-sm-11">
 													<p>Do you have a dependent spouse and/or relatives currently employed by the United Nations or a Common System agency?</p>
 													<label class="radio-inline">
 														<input class="radioToggle" type="radio" name="relativeEmployed" value="yes"> Yes
@@ -330,7 +332,7 @@
 												</div><!-- .question -->
 
 
-												<div class="unuelement-question question col-sm-11" style="margin-top:15px;padding-bottom:5px;">
+												<div class="unuelement-question question col-sm-11">
 													<p>Have you previously submitted an application for employment and/or undergone any tests with UNU?</p>
 													<label class="radio-inline">
 														<input class="radioToggle" type="radio" name="previousApplication" value="yes"> Yes
@@ -349,40 +351,37 @@
 								</div><!-- .panel .panel-default -->
 
 
-
-
-						<?php /*
-
 								<div class="panel panel-default">
 									<div class="panel-heading">
 										<h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
-												Skills
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapse_4">
+												Languages
 											</a>
 										</h4>
 									</div><!-- .panel-heading -->
 
-									<div id="collapseFive" class="panel-collapse collapse">
+									<div id="collapse_4" class="panel-collapse collapse">
 						      			<div class="panel-body">
 
 											<div class="form-group unuelement-table">
-												<label for="contactEmail" class="col-sm-2 control-label">Language</label>
 												<div class="col-sm-10 table-responsive">
 													<table class="table">
 													    <thead>
 												          <tr>
 												            <th>Language</th>
-												            <th>Writting and reading level</th>
-															<th>Speaking level</th>
-												            <th>Remark, certificate</th>
+												            <th>Read</th>
+															<th>Write</th>
+												            <th>Speak</th>
+															<th>Understand</th>
 												          </tr>
 												        </thead>
 												        <tbody>
 															<tr>
-																<td><input type="text" class="form-control"></td>
-																<td><input type="text" class="form-control"></td>
-																<td><input type="text" class="form-control"></td>
-																<td><input type="text" class="form-control"></td>
+																<td><input id="languageName" type="text" class="form-control"></td>
+																<td><input id="languageRead" type="text" class="form-control"></td>
+																<td><input id="languageWrite" type="text" class="form-control"></td>
+																<td><input id="languageSpeak" type="text" class="form-control"></td>
+																<td><input id="languageUnderstand" type="text" class="form-control"></td>
 															</tr>
 														</tbody>
 													  </table>
@@ -396,13 +395,6 @@
 													</div>														
 												</div><!-- .table-responsive -->
 											</div><!-- .form-group -->
-											<div class="form-group unuelement-input" style="margin-top:20px;">
-												<label for="softwareSkills" class="col-sm-2 control-label">Software you are proficient with</label>
-												<div class="col-sm-10">
-													<textarea rows="2" class="form-control" id="softwareSkills"></textarea>
-												</div>
-											</div><!-- .form-group -->
-
 										</div> <!-- panel-body -->
 									</div> <!-- panel-collapse collapse -->					
 								</div><!-- .panel .panel-default -->
@@ -412,13 +404,13 @@
 								<div class="panel panel-default">
 									<div class="panel-heading">
 										<h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapse_5">
 												Education
 											</a>
 										</h4>
 									</div><!-- .panel-heading -->
 
-									<div id="collapseSix" class="panel-collapse collapse">
+									<div id="collapse_5" class="panel-collapse collapse">
 						      			<div class="panel-body">
 											<div class="form-group unuelement-table">
 												<div class="table-responsive">
@@ -456,20 +448,19 @@
 										</div> <!-- panel-body -->
 									</div> <!-- panel-collapse collapse -->					
 								</div><!-- .panel .panel-default -->
-						*/ ?>
 
 
 
 								<div class="panel panel-default">
 									<div class="panel-heading">
 										<h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapse_6">
 												Employment record
 											</a>
 										</h4>
 									</div><!-- .panel-heading -->
 
-									<div id="collapseSeven" class="panel-collapse collapse">
+									<div id="collapse_6" class="panel-collapse collapse">
 										<div class="panel-body">
 											<span class="glyphicon glyphicon-comment" data-toggle="tooltip" data-placement="left" title="Starting with your present employment, list in reverse order every position you have held. Include service in the armed forces."></span>
 
@@ -572,13 +563,13 @@
 								<div class="panel panel-default">
 									<div class="panel-heading">
 										<h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#collapseHeight">
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapse_7">
 												References
 											</a>
 										</h4>
 									</div><!-- .panel-heading -->
 
-									<div id="collapseHeight" class="panel-collapse collapse">
+									<div id="collapse_7" class="panel-collapse collapse">
 										<div class="panel-body">
 										<span class="glyphicon glyphicon-comment" data-toggle="tooltip" data-placement="left" title="List three persons, not related to you, who are familiar with your character and qualifications. Do not repeat the names of supervisors already listed under the EMPLOYMENT section, above."></span>
 
@@ -623,33 +614,35 @@
 								<div class="panel panel-default">
 									<div class="panel-heading">
 										<h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordion" href="#collapseNine">
-												Misc
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapse_8">
+												Skills
 											</a>
 										</h4>
 									</div><!-- .panel-heading -->
 
-									<div id="collapseNine" class="panel-collapse collapse">
+									<div id="collapse_8" class="panel-collapse collapse">
 										<div class="panel-body">
+
 											<div class="form-group unuelement-input col-sm-11" style="margin-left:3px;">
-												<label style="font-weight:normal;font-style:normal;color:#5f6f81;font-size:14px;">Please provide any other relevant details in support of your application – especially as to how you meet the selection criteria for this particular position.</label>
+												<label for="softwareProficient" style="font-weight:normal;font-style:normal;color:#5f6f81;font-size:14px;">List any software applications in which you are proficient</label>
 												<div>
-													<textarea rows="5" class="form-control"></textarea>
+													<textarea id="softwareProficient" rows="2" class="form-control"></textarea>
+												</div>
+											</div><!-- .form-group -->
+
+											<div class="form-group unuelement-input col-sm-11" style="margin-left:3px;">
+												<label for="applicationCriteria" style="font-weight:normal;font-style:normal;color:#5f6f81;font-size:14px;">Please provide any other relevant details in support of your application – especially as to how you meet the selection criteria for this particular position.</label>
+												<div>
+													<textarea id="applicationCriteria" rows="5" class="form-control"></textarea>
 												</div>
 											</div>
+
 										</div> <!-- panel-body -->
 									</div> <!-- panel-collapse collapse -->
 
 								</div><!-- .panel .panel-default -->
 
-
-								<!-- div class="form-group" style="margin-top:40px;">
-						    		<div class="col-sm-offset-2 col-sm-10">
-						      			<button type="submit" class="btn btn-primary">Generate PDF</button>
-						    		</div>
-						  		</div -->
-
-							<button id="pdfGenerate" style="margin-top: 10px;"class="button btn btn-primary">Generate pdf</button>
+							<button id="pdfGenerate" style="margin-top: 10px;" class="button btn btn-primary">Generate pdf</button>
 						</div>
 					</form>
 				</div>

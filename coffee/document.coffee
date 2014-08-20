@@ -33,8 +33,7 @@ class Section extends Document
     super( name )
   
   render: ( currentLevel ) ->
-    if  @name
-      Document.CURRENTY += Document.SETTINGS.jumpSection-currentLevel*5
+    Document.CURRENTY += Document.SETTINGS.jumpSection-currentLevel*5
 
     Document.SETTINGS.jspdf.setFontSize(12-currentLevel*0.4)
     Document.SETTINGS.jspdf.setFontStyle('bold')
@@ -78,9 +77,57 @@ class Input extends Document
       Document.check_space()
       Document.SETTINGS.jspdf.text( xOffsetStart, Document.CURRENTY, line )
       Document.CURRENTY += Document.SETTINGS.jumpParagraph
-
     # do not correct the last loop jump because of the next paragraph
 
+
+
+class Table extends Document
+
+  constructor: ( @label, @values ) ->
+
+  render: ( currentLevel ) ->
+    Document.SETTINGS.jspdf.setFontStyle('bold')
+    Document.SETTINGS.jspdf.setFontSize(9)
+    
+    # label
+    xOffsetStart = Document.SETTINGS.marginLeft + currentLevel*Document.SETTINGS.offsetXNextLevel
+    contentWidth = Document.SETTINGS.marginRight - xOffsetStart
+    nbChar = SplitContent.nbCharFromOffset( contentWidth )
+    splittedValue = SplitContent.split( @label, nbChar )
+    for line in splittedValue
+      Document.check_space()
+      Document.SETTINGS.jspdf.text( Document.SETTINGS.marginLeft + currentLevel*Document.SETTINGS.offsetXNextLevel, Document.CURRENTY, line )
+      Document.CURRENTY += Document.SETTINGS.jumpParagraph
+    # correct the last loop jump
+    Document.CURRENTY -= Document.SETTINGS.jumpParagraph
+
+    # values
+    Document.CURRENTY += Document.SETTINGS.jumpParagraph
+    xOffsetStartTitle = Document.SETTINGS.marginLeft + (currentLevel+1)*Document.SETTINGS.offsetXNextLevel
+    xOffsetStartData  = Document.SETTINGS.marginLeft + (currentLevel+2)*Document.SETTINGS.offsetXNextLevel
+
+    for rows in @values
+      for input in rows
+        # title
+        Document.check_space()
+        Document.SETTINGS.jspdf.setFontStyle('bold')
+        Document.SETTINGS.jspdf.text( xOffsetStartTitle, Document.CURRENTY, input.title )
+
+        # data
+        Document.CURRENTY += Document.SETTINGS.jumpParagraph
+        Document.SETTINGS.jspdf.setFontStyle('normal')
+        # if the data is multilines
+        nbChar = SplitContent.nbCharFromOffset(  Document.SETTINGS.marginRight - xOffsetStartTitle )
+        splittedValue = SplitContent.split( input.data.replace(/\n/g," "), nbChar )
+        for line in splittedValue
+          Document.check_space()
+          Document.SETTINGS.jspdf.text( xOffsetStartData, Document.CURRENTY, line )
+          Document.CURRENTY += Document.SETTINGS.jumpParagraph
+
+      Document.CURRENTY += Document.SETTINGS.jumpParagraph
+
+    # correct the last loop jump
+    Document.CURRENTY -= Document.SETTINGS.jumpParagraph
 
 
 class SplitContent
@@ -113,60 +160,3 @@ class SplitContent
       lines
     else
       []
-
-class Table
-
-  constructor: ( @label, @header, @body) ->
-
-  offsetYsize: ( marginRight, marginLeft, jumpParagraph, offsetXNextLevel, currentLevel ) ->
-    # label, head, padding, body, padding
-    size  = 2 + 1 * jumpParagraph + 2 + @body.length*jumpParagraph
-    
-    if @label != ""
-      size += jumpParagraph 
-    size
-
-  render: ( jspdf, top, marginRight, marginLeft, bottom, jumpSection, jumpTitle, jumpParagraph, offsetXNextLevel, currentY, currentLevel ) ->
-    # label
-    y = currentY
-    if @label != ""
-      jspdf.setFontSize(10)
-      jspdf.setFontStyle('bold')
-      jspdf.text( marginLeft + currentLevel*offsetXNextLevel, y, @label )
-      y += jumpParagraph
-
-    xOffsetStart = 0
-    if @label == ""
-      xOffsetStart = marginLeft + currentLevel*offsetXNextLevel
-    else
-      xOffsetStart = marginLeft + (currentLevel+1)*offsetXNextLevel
-
-    colNb = @header.length
-    tableWidth = marginRight - xOffsetStart
-    xShift = tableWidth / colNb
-    y += 2;
-
-    # head
-    jspdf.setFontSize(10)
-    jspdf.setFontStyle('bold')
-    xOffsetTemp = xOffsetStart
-    for col in @header
-      jspdf.text( xOffsetTemp, y, col );
-      xOffsetTemp += xShift
-
-    y += 2
-    jspdf.setLineWidth(0.5)
-    jspdf.line( xOffsetStart, y, marginRight, y) # horizontal line
-    y += jumpParagraph
-
-    # body
-    jspdf.setFontStyle('normal')
-    xOffsetTemp = xOffsetStart
-    for rows in @body
-      for row in rows
-        jspdf.text( xOffsetTemp, y, row )
-        xOffsetTemp += xShift
-      xOffsetTemp = xOffsetStart # reinitialize        
-      y += jumpParagraph
-
-    y += jumpParagraph # for the next paragraph
