@@ -2,8 +2,6 @@
 
 		// reduce size of element
 		$(".form-group input[type!=radio]").css({'height': '30px', 'padding' : '5px 10px', 'line-height' : '1.5', 'border-radius':'3px' });
-		$(".form-group").css({'margin-bottom': '5px' });
-		$(".control-label").css({'padding-top': '0px', 'text-align': 'right' });
 
 		// initialize and bin the question inputs
 		$(".radioToggle").change( function(event){
@@ -15,7 +13,6 @@
 			event.preventDefault();
 		});
 
-
 		function addTableEntry( table ){
 			var tbody 			= $(table).find( '> tbody' );
 			var all_lines		= $(tbody).find('> tr');
@@ -25,12 +22,12 @@
 
 			// empty the inputs
 			$(cloned).find('input').each( function(){
-						$(this).attr( 'id',  $(this).attr('id') + nb_records);
-						$(this).val('');
+						$(this).attr( 'id',  $(this).attr('id') + nb_records).val('');
 					})
 			$(cloned).hide().appendTo( tbody ).fadeIn("slow");
 			// focus on the first element of the new row
 			$(tbody).find('tr:last-child').find("td:first-child input").focus();
+
 	   }
 
 		function removeTableEntry( table ){
@@ -74,34 +71,47 @@
 				var jobContainer 	= $("#accordionJobs");
 				var all_jobs		= jobContainer.children();
 				var nb_records 		= all_jobs.length; 
-				var first_record = all_jobs[0], cloned = $(first_record).clone();
+				var first_record	= all_jobs[0], cloned = $(first_record).clone();
 
 				// change the id
-				$(cloned).find('div[id^=job_]').attr('id', function(i, att){
-													return att.split("_")[0] + "_" + (nb_records +1);
-												});
+				$(cloned).find('div[id^=job_]').attr('id',
+								function(i, att){ return att.split("_")[0] + "_" + (nb_records +1);});
 
 				// change the href and title
 				(function(e){
 					var currentRec = nb_records +1;
 					$(e).attr('href', $(e).attr('href').split("_")[0] + "_" + currentRec);
 					$(e).text( $(e).text().split(" ")[0] + " " + currentRec );
-				})($(cloned).find('h4.panel-title a'));
+				})( $(cloned).find('h4.panel-title a') );
 
-				// change the input's id and empty the value
-				$(cloned).find('.form-control').each(function(){
-					$(this).attr( 'id',  $(this).attr('id') + nb_records);
-					$(this).val('');
-				});
+				// change the input's id and empty each input value
+				$(cloned).find('.form-control').each(
+					function(){ $(this).attr( 'id',  $(this).attr('id') + nb_records).val('');});
+
 				// change all label's for
 				$(cloned).find('label').each(function(){
 					$(this).attr( 'for',  $(this).attr('for') + nb_records);
 				});
+
 				// attach to the parent
 				$(cloned).hide().appendTo( jobContainer ).fadeIn("slow");
 
-				// collapse it
-				$(cloned).find('div[id^=job_]').collapse('show');
+				// collapse hide all other
+				$(all_jobs).find('div[id^=job_]').each(function(){
+					if( $(this).hasClass( 'in') ){
+						$(this).collapse('hide');
+					}
+				}); 
+
+				(function(e){
+					// collapse show the new one
+					if( ! e.hasClass('in') ){
+						$(e).collapse( 'show'); 
+					}
+					// focus on the first element of the new entry
+					$(e).find('.form-control').first().focus();
+				})( $(cloned).find('div[id^=job_]') );
+
 				event.preventDefault();
    				});
 

@@ -1,47 +1,33 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 10)|!(IE)]><!-->
-<html lang="en-US"> <!--<![endif]-->
+<html lang="en">
 	<head>
-		<meta charset="utf-8">
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+	    <link rel="icon" href="favicon.ico">
+
 		<title>UNU PDF Generation</title>
-		<meta name="description" content="">
-	    <meta name="keywords" content="">
-		<meta name="author" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
 		<link rel='stylesheet' id='bootstrap-style-css'  href='css/bootstrap.css' type='text/css' media='all' />
+		<link rel='stylesheet'  href='css/style.css' type='text/css' media='all' />
 
-    	<style type="text/css">
-    		@import url(http://fonts.googleapis.com/css?family=Lato:300);
-    		body{
-				font-family: 'Lato', 'Helvetica', sans-serif;
-				color:#5f6f81;
-    		}
-    		h4.panel-title{
-    			font-weight:bold;
-    		}
-   			label{
-   				color:#5f6f81;
-   			}
-   			.question{
-   				margin-top:15px;
-   				padding-bottom: 20px;
-   				border-bottom: 1.2px solid #ddd;
-   			}
-    	</style>
-
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+	      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	    <![endif]-->
 	</head>
 	<body>
 		<div class="container">
+			<div class="page-header">
+        		<h1>Personal history form for application</h1>
+        		<p class="lead">Please carefully read and fill out.</p>
+     		 </div>
         	<div class="row">
             	<div class="col-md-12">
-            		<h1>Application form</h1>
 					<form id="applicationForm" class="form-horizontal">
-						<span class="glyphicon glyphicon-comment" data-toggle="tooltip" data-placement="left" title="Please answer each question clearly and completely. Read carefully and follow all directions. Please tick appropriate boxes."></span>
-
 						<div id="accordion" class="panel-group">
 
 								<div class="panel panel-default">
@@ -364,7 +350,7 @@
 						      			<div class="panel-body">
 
 											<div class="form-group unuelement-table">
-												<div class="col-sm-10 table-responsive">
+												<div class="table-responsive">
 													<table class="table">
 													    <thead>
 												          <tr>
@@ -469,75 +455,75 @@
 												<div class="panel panel-default unuelement-job">
 													<div class="panel-heading">
 														<h4 class="panel-title">
-																<a data-toggle="collapse" data-parent="#accordionJobs" href="#job_1">Record 1</a>
+															<a data-toggle="collapse" data-parent="#accordionJobs" href="#job_1">Record 1</a>
 														</h4>
 													</div><!-- .panel-heading -->
 
 													<div id="job_1" class="panel-collapse collapse in">
 											      		<div class="panel-body">
 															<div class="form-group">
-																<label for="jobFrom" class="col-sm-2 control-label">From</label>
-																<div class="col-sm-10">
+																<label for="jobFrom" class="col-sm-3 control-label">From</label>
+																<div class="col-sm-9">
 																	<input type="text" placeholder="mm/yyyy" class="form-control" id="jobFrom">
 																</div>
 															</div><!-- .form-group -->
 															<div class="form-group">
-																<label for="jobTo" class="col-sm-2 control-label">To</label>
-																<div class="col-sm-10">
+																<label for="jobTo" class="col-sm-3 control-label">To</label>
+																<div class="col-sm-9">
 																	<input type="text" placeholder="mm/yyyy" class="form-control" id="jobTo">
 																</div>
 															</div><!-- .form-group -->
 															<div class="form-group">
-																<label for="salaryStart" class="col-sm-2 control-label">Starting salary (year)</label>
-																<div class="col-sm-10">
+																<label for="salaryStart" class="col-sm-3 control-label">Starting salary (year)</label>
+																<div class="col-sm-9">
 																	<input type="text" class="form-control" id="salaryStart">
 																</div>
 															</div><!-- .form-group -->
 															<div class="form-group">
-																<label for="salaryFinal" class="col-sm-2 control-label">Final salary (year)</label>
-																<div class="col-sm-10">
+																<label for="salaryFinal" class="col-sm-3 control-label">Final salary (year)</label>
+																<div class="col-sm-9">
 																	<input type="text" class="form-control" id="salaryFinal">
 																</div>
 															</div><!-- .form-group -->
 															<div class="form-group">
-																<label for="jobTitle" class="col-sm-2 control-label">Exact title of your post</label>
-																<div class="col-sm-10">
+																<label for="jobTitle" class="col-sm-3 control-label">Exact title of your post</label>
+																<div class="col-sm-9">
 																	<input type="text" class="form-control" id="jobTitle">
 																</div>
 															</div><!-- .form-group -->
 															<div class="form-group">
-																<label for="jobEmployer" class="col-sm-2 control-label">Employer name and address</label>
-																<div class="col-sm-10">
+																<label for="jobEmployer" class="col-sm-3 control-label">Employer name and address</label>
+																<div class="col-sm-9">
 																	<input type="text" class="form-control" id="jobEmployer">
 																</div>
 															</div><!-- .form-group -->
 															<div class="form-group">
-																<label for="jobEmployerBusiness" class="col-sm-2 control-label">Type of business</label>
-																<div class="col-sm-10">
+																<label for="jobEmployerBusiness" class="col-sm-3 control-label">Type of business</label>
+																<div class="col-sm-9">
 																	<input type="text" class="form-control" id="jobEmployerBusiness">
 																</div>
 															</div><!-- .form-group -->
 															<div class="form-group">
-																<label for="jobSupervisor" class="col-sm-2 control-label">Name of supervisor</label>
-																<div class="col-sm-10">
+																<label for="jobSupervisor" class="col-sm-3 control-label">Name of supervisor</label>
+																<div class="col-sm-9">
 																	<input type="text" class="form-control" id="jobSupervisor">
 																</div>
 															</div><!-- .form-group -->
 															<div class="form-group">
-																<label for="jobSupervised" class="col-sm-2 control-label">No. and type of employees supervised</label>
-																<div class="col-sm-10">
+																<label for="jobSupervised" class="col-sm-3 control-label">No. and type of employees supervised</label>
+																<div class="col-sm-9">
 																	<input type="text" class="form-control" id="jobSupervised">
 																</div>
 															</div><!-- .form-group -->							
 															<div class="form-group">
-																<label for="jobDuties" class="col-sm-2 control-label">Duties and achievements</label>
-																<div class="col-sm-10">
+																<label for="jobDuties" class="col-sm-3 control-label">Duties and achievements</label>
+																<div class="col-sm-9">
 																	<textarea rows="4" class="form-control" id="jobDuties"></textarea>
 																</div>
 															</div><!-- .form-group -->
 															<div class="form-group">
-																<label for="jobDeparture" class="col-sm-2 control-label">Reason for leaving</label>
-																<div class="col-sm-10">
+																<label for="jobDeparture" class="col-sm-3 control-label">Reason for leaving</label>
+																<div class="col-sm-9">
 																	<input type="text" class="form-control" id="jobDeparture">
 																</div>
 															</div><!-- .form-group -->
@@ -571,7 +557,7 @@
 
 									<div id="collapse_7" class="panel-collapse collapse">
 										<div class="panel-body">
-										<span class="glyphicon glyphicon-comment" data-toggle="tooltip" data-placement="left" title="List three persons, not related to you, who are familiar with your character and qualifications. Do not repeat the names of supervisors already listed under the EMPLOYMENT section, above."></span>
+											<span class="glyphicon glyphicon-comment" data-toggle="tooltip" data-placement="left" title="List three persons, not related to you, who are familiar with your character and qualifications. Do not repeat the names of supervisors already listed under the EMPLOYMENT section, above."></span>
 
 
 											<div class="form-group unuelement-table">
