@@ -1,7 +1,7 @@
 
 body{
-			font-family: 'Lato', 'Helvetica', sans-serif;
-			color:#5f6f81;
+	font-family: 'Lato', 'Helvetica', sans-serif;
+	color:#5f6f81;
 }
 
 h4.panel-title{
@@ -16,4 +16,15 @@ h4.panel-title{
 .form-group{
   /*override the bootstrap one*/
   margin-bottom: 5px;
+}
+
+.blocklabel{
+	font-weight:normal;
+	font-style:normal;
+	color:#5f6f81;
+	font-size:14px;
+}
+
+.tableButton{
+	margin-left:20px;
 }

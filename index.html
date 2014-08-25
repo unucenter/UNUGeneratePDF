@@ -23,11 +23,11 @@
 		<div class="container">
 			<div class="page-header">
         		<h1>Personal history form for application</h1>
-        		<p class="lead">Please carefully read and fill out.</p>
+        		<p class="lead">Please read and fill out carefully.</p>
      		 </div>
         	<div class="row">
             	<div class="col-md-12">
-					<form id="applicationForm" class="form-horizontal">
+					<form id="historyApplicationForm" class="form-horizontal">
 						<div id="accordion" class="panel-group">
 
 								<div class="panel panel-default">
@@ -193,7 +193,7 @@
 														</tr>
 													</tbody>
 												  </table>
-												  <div class="tableButton" style="margin-top:-20px;margin-left:8px;position:relative;">
+												  <div class="tableButton">
 													<button class="addTableEntry">
 														<span class="glyphicon glyphicon-plus"></span>
 													</button>
@@ -305,7 +305,7 @@
 																</tr>
 															</tbody>
 														  </table>
-														  <div class="tableButton" style="margin-top:-20px;margin-left:8px;position:relative;">
+														  <div class="tableButton">
 															<button class="addTableEntry">
 																<span class="glyphicon glyphicon-plus"></span>
 															</button>
@@ -371,7 +371,7 @@
 															</tr>
 														</tbody>
 													  </table>
-											  		<div class="tableButton" style="margin-top:-20px;margin-left:8px;position:relative;">
+											  		<div class="tableButton">
 														<button class="addTableEntry">
 															<span class="glyphicon glyphicon-plus"></span>
 														</button>
@@ -420,7 +420,7 @@
 														</tr>
 													</tbody>
 												  </table>
-												  <div class="tableButton" style="margin-top:-20px;margin-left:8px;position:relative;">
+												  <div class="tableButton">
 													<button class="addTableEntry">
 														<span class="glyphicon glyphicon-plus"></span>
 													</button>
@@ -452,7 +452,7 @@
 
 
 											<div id="accordionJobs" class="panel-group"> <!-- all records -->
-												<div class="panel panel-default unuelement-job">
+												<div class="panel panel-default unuelement-section">
 													<div class="panel-heading">
 														<h4 class="panel-title">
 															<a data-toggle="collapse" data-parent="#accordionJobs" href="#job_1">Record 1</a>
@@ -578,7 +578,7 @@
 														</tr>
 													</tbody>
 												  </table>
-												  <div class="tableButton" style="margin-top:-20px;margin-left:8px;position:relative;">
+												  <div class="tableButton">
 													<button class="addTableEntry" >
 														<span class="glyphicon glyphicon-plus"></span>
 													</button>
@@ -609,15 +609,15 @@
 									<div id="collapse_8" class="panel-collapse collapse">
 										<div class="panel-body">
 
-											<div class="form-group unuelement-input col-sm-11" style="margin-left:3px;">
-												<label for="softwareProficient" style="font-weight:normal;font-style:normal;color:#5f6f81;font-size:14px;">List any software applications in which you are proficient</label>
+											<div class="unuelement-input col-sm-11">
+												<label for="softwareProficient" class="blocklabel">List any software applications in which you are proficient.</label>
 												<div>
 													<textarea id="softwareProficient" rows="2" class="form-control"></textarea>
 												</div>
 											</div><!-- .form-group -->
 
-											<div class="form-group unuelement-input col-sm-11" style="margin-left:3px;">
-												<label for="applicationCriteria" style="font-weight:normal;font-style:normal;color:#5f6f81;font-size:14px;">Please provide any other relevant details in support of your application – especially as to how you meet the selection criteria for this particular position.</label>
+											<div class="unuelement-input col-sm-11">
+												<label for="applicationCriteria" class="blocklabel">Please provide any other relevant details in support of your application – especially as to how you meet the selection criteria for this particular position.</label>
 												<div>
 													<textarea id="applicationCriteria" rows="5" class="form-control"></textarea>
 												</div>
@@ -636,8 +636,8 @@
         </div>
 		<script src='js/jquery-min.js'></script>
 		<script src='js/bootstrap.min.js'></script>
-		<script src="js/jspdf.debug.js"></script>
+		<script src="js/jspdf.min.js"></script>
+		<script src="js/jquery.UNUGeneratePDF.js"></script>
 		<script src="js/personalHistoryForm.js"></script>
-		<script src="js/document.js"></script>
 	</body>
 </html>
