@@ -1,0 +1,30 @@
+
+body{
+	font-family: 'Lato', 'Helvetica', sans-serif;
+	color:#5f6f81;
+}
+
+h4.panel-title{
+      font-weight:bold;
+}
+
+.question{
+      margin-top:15px;
+      padding-bottom: 20px;
+      border-bottom: 1.2px solid #ddd;
+}
+.form-group{
+  /*override the bootstrap one*/
+  margin-bottom: 5px;
+}
+
+.blocklabel{
+	font-weight:normal;
+	font-style:normal;
+	color:#5f6f81;
+	font-size:14px;
+}
+
+.tableButton{
+	margin-left:20px;
+}
