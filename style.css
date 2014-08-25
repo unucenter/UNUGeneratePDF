@@ -8,7 +8,7 @@ h4.panel-title{
       font-weight:bold;
 }
 
-.question{
+.unuelement-question{
       margin-top:15px;
       padding-bottom: 20px;
       border-bottom: 1.2px solid #ddd;
@@ -27,4 +27,17 @@ h4.panel-title{
 
 .tableButton{
 	margin-left:20px;
+}
+
+#pdfGenerate{
+	margin-bottom:20px;
+}
+
+.slightShift{
+	margin-left:10px;
+}
+
+footer{
+	margin-top:30px;
+	margin-bottom:10px;
 }

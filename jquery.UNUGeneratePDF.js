@@ -13,9 +13,52 @@
 		// initialization
 		else{
 			opts = $.extend( {}, $.fn.UNUGeneratePDF.defaults, options );
+      initialize( this );
 		}
 		return this;
 	};
+
+
+  function initialize(e){
+
+    // bind event handler
+    $(".unuelement-question input[type=radio]").change( function(event){
+      var show =  ( $(this).val() == 'yes' ) ? true : false  ;
+      $(this).closest(".unuelement-question").find("> div").toggle(show);
+
+      // focus on the first input
+      if( show ) $(this).closest(".unuelement-question").find("> div").find('input, textarea').first().focus();
+      event.preventDefault();
+    });
+
+    // bind event handler
+    $(e).find(".unuTableButton").each( function(){
+      var table = $(this).siblings("table");
+      var add = $(this).find("button.unuAddTableEntry"), remove = $(this).find("button.unuRemoveTableEntry");
+        $( add ).on('click', function(event){
+          addTableEntry( table );
+          event.preventDefault();
+        });
+      $( remove ).on('click', function(event){
+          removeTableEntry( table );
+          event.preventDefault();
+        });
+    });
+
+    // bind event handler
+    $(e).find(".unuSectionButton").each( function(){
+      var section = $(this).siblings(".panel-group");
+      var add = $(this).find("button.unuAddSectionEntry"), remove = $(this).find("button.unuRemoveSectionEntry"); 
+        $( add ).on('click', function(event){
+          addSectionEntry( section );
+          event.preventDefault();
+        });
+      $( remove ).on('click', function(event){
+          removeSectionEntry( section );
+          event.preventDefault();
+        });
+    });
+  }
 
 
 	function generatePDF(e){
@@ -51,7 +94,7 @@
 		}
 
 		$(panels).each(function(){
-			var sectionName = $.trim( $(this).find("> div.panel-heading h4.panel-title a").text() );
+			var sectionName = $.trim( $(this).find("> div.panel-heading .panel-title a").text() );
 			var section = new Section( sectionName );
 
 			$(this).find("[class*='unuelement-']").each(function(){
@@ -75,10 +118,10 @@
 
 					var question = new Section("");
 					var content = $(this).find("> p").text();
-					var response = $(this).find("input.radioToggle:checked").val();
+					var response = $(this).find("input[type=radio]:checked").val();
 					question.add( new Input( content, response ) );
 
-					var table = $(this).find(".toggleQuestion table"); 
+					var table = $(this).find("> div table"); 
 
 					// there is a table
 					if( response!='no' && table.length > 0 ){
@@ -86,7 +129,7 @@
 					}
 					else{
 						var complement = new Section("");
-						var input = $(this).find(".toggleQuestion .form-control");
+						var input = $(this).find("> div .form-control");
 						var complementLabel = $(input).siblings("p").text(), complementValue = $(input).val();
 						if( complementValue ){
 							complement.add( new Input( complementLabel, complementValue ) );
@@ -102,7 +145,7 @@
 					section.add(table);
 				}
 				else if( elementSemantic == "section"){
-					var no = $(this).find("h4.panel-title a").text() ;
+					var no = $(this).find(".panel-title a").text() ;
 					var job = new Section(no);
 					$(this).find( ".form-control" ).each( function(){
 						var label = $(this).parent().siblings("label").text(), value = $(this).val();
@@ -131,6 +174,90 @@
 								outputFileName: "applicationHistory",
 								metadata:{}
 	};
+
+
+
+  function addTableEntry( table ){
+    var tbody       = $(table).find( '> tbody' );
+    var all_lines   = $(tbody).find('> tr');
+    var nb_records  = all_lines.length;
+    var first_tr    = all_lines[0];
+    var cloned      = $(first_tr).clone();
+
+    // empty the inputs
+    $(cloned).find('input, textarea').each( function(){
+          $(this).attr( 'id',  $(this).attr('id') + nb_records).val('');
+        });
+    $(cloned).hide().appendTo( tbody ).fadeIn("slow");
+    // focus on the first element of the new row
+    $(tbody).find('tr:last-child').find("td:first-child").find("input, textarea").focus();
+
+    }
+
+  function removeTableEntry( table ){
+    var tbody = $(table).find( 'tbody' );
+    var children = $( tbody ).children();
+    var tbody_nb_children = children.length;
+    if( tbody_nb_children > 1 ){
+      $(children[tbody_nb_children-1]).fadeOut("slow", function(){$(this).remove();});         
+    }
+  }
+
+
+  function addSectionEntry( section ){
+    var all_records   = $(section).children();
+    var nb_records    = all_records.length; 
+    var first_record  = all_records[0], cloned = $(first_record).clone();
+
+    // change the id
+    $(cloned).find('div.panel-collapse').attr('id',
+            function(i, att){ return att.split("_")[0] + "_" + (nb_records +1);});
+
+    // change the href and title
+    (function(e){
+      var currentRec = nb_records +1;
+      $(e).attr('href', $(e).attr('href').split("_")[0] + "_" + currentRec);
+      $(e).text( $(e).text().split(" ")[0] + " " + currentRec );
+    })( $(cloned).find('.panel-title a') );
+
+    // change the input's id and empty each input value
+    $(cloned).find('input, textarea').each(function(){
+              $(this).attr( 'id',  $(this).attr('id') + nb_records).val('');
+    });
+
+    // change all label's for
+    $(cloned).find('label').each(function(){
+      $(this).attr( 'for',  $(this).attr('for') + nb_records);
+    });
+
+    // collapse hide all other
+    $(section).find('div.panel-collapse').each(function(){
+      if( $(this).hasClass( 'in') ){
+        $(this).collapse('hide');
+      }
+    }); 
+
+    // attach to the parent
+    $(cloned).hide().appendTo( section ).fadeIn("slow");
+
+    (function(e){
+      // collapse show the new one
+      if( ! e.hasClass('in') ){
+        $(e).collapse( 'show'); 
+      }
+      // focus on the first element of the new entry
+      $(e).find('input, textarea').first().focus();
+    })( $(cloned).find('div.panel-collapse') );
+  }
+
+
+  function removeSectionEntry( section ){ 
+        var nb_records = $( section ).children().length;
+        if( nb_records > 1 ){
+          $(section).find('div.panel-default:last-child').fadeOut("slow", function(){$(this).remove();})          
+        }
+  }
+
 
 
 
@@ -354,3 +481,6 @@
 
 	
 })(jQuery);
+
+
+
