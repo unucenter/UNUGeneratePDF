@@ -193,16 +193,14 @@
 														</tr>
 													</tbody>
 												  </table>
-												  <div class="unuTableButton slightShift">
-													<button class="unuAddTableEntry" >
-												  <div class="tableButton">
-													<button class="addTableEntry">
-														<span class="glyphicon glyphicon-plus"></span>
-													</button>
-													<button class="unuRemoveTableEntry" >
-														<span class="glyphicon glyphicon-minus"></span>
-													</button>
-												  </div>
+												  <div class="unuTableButton">
+														<button class="unuAddTableEntry">
+															<span class="glyphicon glyphicon-plus"></span>
+														</button>
+														<button class="unuRemoveTableEntry">
+															<span class="glyphicon glyphicon-minus"></span>
+														</button>
+													</div>
 												</div><!-- table-responsive -->
 											</div><!-- .form-group -->
 										</div> <!-- panel-body -->
@@ -235,7 +233,7 @@
 														<p>Please describe:</p>
 														<textarea class="form-control"></textarea>
 													</div>
-												</div><!-- .question -->
+												</div><!-- .unuelement-question -->
 
 												<div class="unuelement-question col-sm-11">
 													<p>Are you currently, or have you previously been, employed by the United Nations or a Common System agency?</p>
@@ -249,7 +247,7 @@
 														<p>Please state name of agency and your Index Number (Staff Identity No.):</p>
 														<input type="text" class="form-control"/>	
 													</div>
-												</div><!-- .question -->
+												</div><!-- .unuelement-question -->
 
 												<div class="unuelement-question col-sm-11">
 													<p>Have you taken up legal permanent residence status in any country other than that of your nationality?</p>
@@ -263,7 +261,7 @@
 														<p>Which country (ies):</p>
 														<input type="text" class="form-control"/>	
 													</div>
-												</div><!-- .question -->
+												</div><!-- .unuelement-question -->
 
 
 												<div class="unuelement-question col-sm-11">
@@ -278,7 +276,7 @@
 														<p>Explain fully:</p>
 														<textarea class="form-control"></textarea>
 													</div>
-												</div><!-- .question -->
+												</div><!-- .unuelement-question -->
 
 
 												<div class="unuelement-question col-sm-11">
@@ -307,19 +305,17 @@
 																</tr>
 															</tbody>
 														  </table>
-														  <div class="unuTableButton slightShift">
-															<button class="unuAddTableEntry" >
-														  <div class="tableButton">
-															<button class="addTableEntry">
+												  		  <div class="unuTableButton">
+															<button class="unuAddTableEntry">
 																<span class="glyphicon glyphicon-plus"></span>
 															</button>
-															<button class="unuRemoveTableEntry" >
+															<button class="unuRemoveTableEntry">
 																<span class="glyphicon glyphicon-minus"></span>
 															</button>
 														  </div>
-														</div><!-- table-responsive -->
-													</div><!-- toggleQuestion -->
-												</div><!-- .question -->
+													</div><!-- table-responsive -->
+												  </div>
+												</div><!-- .unuelement-question -->
 
 
 												<div class="unuelement-question col-sm-11">
@@ -334,7 +330,7 @@
 														<p>When:</p>
 														<textarea class="form-control"></textarea>
 													</div>
-												</div><!-- .question -->
+												</div><!-- .unuelement-question -->
 
 										</div> <!-- panel-body -->
 									</div> <!-- panel-collapse collapse -->					
@@ -376,12 +372,10 @@
 														</tbody>
 													  </table>
 													  <div class="unuTableButton slightShift">
-														<button class="unuAddTableEntry" >
-											  		<div class="tableButton">
-														<button class="addTableEntry">
+														<button class="unuAddTableEntry">
 															<span class="glyphicon glyphicon-plus"></span>
 														</button>
-														<button class="unuRemoveTableEntry" >
+														<button class="unuRemoveTableEntry">
 															<span class="glyphicon glyphicon-minus"></span>
 														</button>
 													  </div>
@@ -427,15 +421,13 @@
 													</tbody>
 												  </table>
 												  <div class="unuTableButton slightShift">
-													<button class="unuAddTableEntry" >
-												  <div class="tableButton">
-													<button class="addTableEntry">
-														<span class="glyphicon glyphicon-plus"></span>
-													</button>
-													<button class="unuRemoveTableEntry" >
-														<span class="glyphicon glyphicon-minus"></span>
-													</button>
-												  </div>
+														<button class="unuAddTableEntry">
+															<span class="glyphicon glyphicon-plus"></span>
+														</button>
+														<button class="unuRemoveTableEntry">
+															<span class="glyphicon glyphicon-minus"></span>
+														</button>
+												   </div>
 												</div><!-- table-responsive -->
 											</div><!-- .form-group -->
 
@@ -538,7 +530,7 @@
 														</div> <!-- .panel-body-->
 													</div> <!-- .panel-collapse -->								
 												</div><!-- .panel-default -->
-											</div> <!-- panel-group -->
+											</div> <!-- #accordionJobs -->
 											<div class="unuSectionButton">
 												<button class="unuAddSectionEntry" >
 													<span class="glyphicon glyphicon-plus"></span>
@@ -587,15 +579,13 @@
 													</tbody>
 												  </table>
 												  <div class="unuTableButton slightShift">
-													<button class="unuAddTableEntry" >
-												  <div class="tableButton">
-													<button class="addTableEntry" >
-														<span class="glyphicon glyphicon-plus"></span>
-													</button>
-													<button class="unuRemoveTableEntry" >
-														<span class="glyphicon glyphicon-minus"></span>
-													</button>
-												  </div>
+														<button class="unuAddTableEntry">
+															<span class="glyphicon glyphicon-plus"></span>
+														</button>
+														<button class="unuRemoveTableEntry">
+															<span class="glyphicon glyphicon-minus"></span>
+														</button>
+												   </div>
 												</div><!-- table-responsive-->
 											</div><!-- .form-group -->
 										</div> <!-- panel-body -->
@@ -637,7 +627,8 @@
 
 								</div><!-- .panel .panel-default -->
 
-						<button id="pdfGenerate" style="margin-top: 10px;" class="button btn btn-primary">Generate pdf</button>
+							<button id="pdfGenerate" style="margin-top: 10px;" class="button btn btn-primary">Generate pdf</button>
+						</div> <!-- #accordion-->
 					</form>
 				</div>
         	</div>
@@ -671,12 +662,6 @@
 	   		});
 		})(jQuery);
    		</script>
-        </div>
-		<script src='js/jquery-min.js'></script>
-		<script src='js/bootstrap.min.js'></script>
-		<script src="js/jspdf.min.js"></script>
-		<script src="js/jquery.UNUGeneratePDF.js"></script>
-		<script src="js/personalHistoryForm.js"></script>
-	</body>
+    </body>
 </html>
 
