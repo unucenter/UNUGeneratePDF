@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+	    <link rel="icon" href="../favicon.ico">
+
+		<title>UNU PDF Generation</title>
+
+		<link rel='stylesheet' id='bootstrap-style-css'  href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' type='text/css' media='all' />
+		<link rel='stylesheet'  href='../style.css' type='text/css' media='all' />
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+	      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	    <![endif]-->
+	</head>
+	<body>
+		<div class="container">
+			<div class="page-header">
+        		<h1>Personal history form for application</h1>
+        		<p class="lead">Please read and fill out carefully.</p>
+     		 </div>
+        	<div class="row">
+            	<div class="col-md-12">
+					<form id="historyApplicationForm" class="form-horizontal">
+						<div id="accordion" class="panel-group">
+
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapse_1">
+												Personal data
+											</a>
+										</h4>
+									</div><!-- .panel-heading -->
+
+									<div id="collapse_1" class="panel-collapse collapse">
+						      			<div class="panel-body">
+
+											<div class="form-group unuelement-input">
+												<label for="familyName" class="col-sm-2 control-label">Family name</label>
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="familyName">
+												</div>
+											</div><!-- .form-group -->
+											<div class="form-group unuelement-input">
+												<label for="firstName" class="col-sm-2 control-label">First name</label>
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="firstName">
+												</div>
+											</div><!-- .form-group -->
+											<div class="form-group unuelement-radio">
+												<label for="sexMale" class="col-sm-2 control-label">Sex</label>
+												<div class="col-sm-10">
+													<label class="radio-inline">
+														<input type="radio" name="sex" id="sexMale" value="male"> Male
+													</label>
+													<label class="radio-inline">
+								  						<input type="radio" name="sex" id="sexFemale" value="female"> Female
+													</label>
+												</div>
+											</div><!-- .form-group -->
+											<div class="form-group unuelement-input">
+												<label for="birthDate" class="col-sm-2 control-label">Date of birth</label>
+												<div class="col-sm-10">
+													<input type="text" placeholder="dd/mm/yyyy" class="form-control" id="birthDate">
+												</div>
+											</div><!-- .form-group -->
+											<div class="form-group unuelement-input">
+												<label for="nationality" class="col-sm-2 control-label">Nationality</label>
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="nationality">
+												</div>
+											</div><!-- .form-group -->
+											<div class="form-group unuelement-input">
+												<label for="address" class="col-sm-2 control-label">Address</label>
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="address">
+												</div>
+											</div><!-- .form-group -->
+											<div class="form-group unuelement-input" >
+												<label for="telno" class="col-sm-2 control-label">Tel. no.</label>
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="telno">
+												</div>
+											</div><!-- .form-group -->
+											<div class="form-group unuelement-input" >
+												<label for="emailAddress" class="col-sm-2 control-label">e-mail address</label>
+												<div class="col-sm-10">
+													<input type="email" class="form-control" id="emailAddress">
+												</div>
+											</div><!-- .form-group -->
+											<div class="form-group unuelement-input">
+												<label for="maritalStatus" class="col-sm-2 control-label">Marital status</label>
+												<div class="col-sm-10">
+													<input type="text" class="form-control" id="maritalStatus">
+												</div>
+											</div><!-- .form-group -->
+										</div> <!-- panel-body -->
+									</div> <!-- panel-collapse collapse -->
+								</div><!-- .panel .panel-default -->
+
+
+
+
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapse_2">
+												Questions
+											</a>
+										</h4>
+									</div><!-- .panel-heading -->
+
+									<div id="collapse_2" class="panel-collapse collapse">
+						      			<div class="panel-body">
+												<div class="unuelement-question col-sm-11">
+													<p>Do you have a dependent spouse and/or relatives currently employed by the United Nations or a Common System agency?</p>
+													<label class="radio-inline">
+														<input type="radio" name="relative" value="yes"> Yes
+													</label>
+													<label class="radio-inline">
+								  						<input type="radio" name="relative" value="no" checked> No
+													</label>
+													<div style="display:none;">
+														<div class="table-responsive">
+														  <table class="table">
+														    <thead>
+													          <tr>
+													            <th>Name</th>
+													            <th>Relationship</th>
+																<th>Name of International Organization</th>
+													          </tr>
+													        </thead>
+													        <tbody>
+																<tr>
+																	<td><input id="UNEmployedName" type="text" class="form-control"></td>
+																	<td><input id="UNEmployedRelationship" type="text" class="form-control"></td>
+																	<td><input id="UNEmployedOrganization" type="text" class="form-control"></td>
+																</tr>
+															</tbody>
+														  </table>
+														  <div class="unuTableButton slightShift">
+															<button class="unuAddTableEntry">
+																<span class="glyphicon glyphicon-plus"></span>
+															</button>
+															<button class="unuRemoveTableEntry">
+																<span class="glyphicon glyphicon-minus"></span>
+															</button>
+														  </div>
+														</div><!-- table-responsive -->
+													</div><!-- toggleQuestion -->
+												</div><!-- .question -->
+
+
+												<div class="unuelement-question col-sm-11">
+													<p>Have you previously submitted an application for employment and/or undergone any tests with UNU?</p>
+													<label class="radio-inline">
+														<input type="radio" name="previousApplication" value="yes"> Yes
+													</label>
+													<label class="radio-inline">
+								  						<input type="radio" name="previousApplication" value="no" checked> No
+													</label>
+													<div style="display:none;">
+														<p>When:</p>
+														<textarea class="form-control"></textarea>
+													</div>
+												</div><!-- .question -->
+
+										</div> <!-- panel-body -->
+									</div> <!-- panel-collapse collapse -->					
+								</div><!-- .panel .panel-default -->
+
+
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapse_3">
+												Languages
+											</a>
+										</h4>
+									</div><!-- .panel-heading -->
+
+									<div id="collapse_3" class="panel-collapse collapse">
+						      			<div class="panel-body">
+
+											<div class="form-group unuelement-table">
+												<div class="table-responsive">
+													<table class="table">
+													    <thead>
+												          <tr>
+												            <th>Language</th>
+												            <th>Read</th>
+															<th>Write</th>
+												            <th>Speak</th>
+															<th>Understand</th>
+												          </tr>
+												        </thead>
+												        <tbody>
+															<tr>
+																<td><input id="languageName" type="text" class="form-control"></td>
+																<td><input id="languageRead" type="text" class="form-control"></td>
+																<td><input id="languageWrite" type="text" class="form-control"></td>
+																<td><input id="languageSpeak" type="text" class="form-control"></td>
+																<td><input id="languageUnderstand" type="text" class="form-control"></td>
+															</tr>
+														</tbody>
+													  </table>
+											  		<div class="unuTableButton slightShift">
+														<button class="unuAddTableEntry">
+															<span class="glyphicon glyphicon-plus"></span>
+														</button>
+														<button class="unuRemoveTableEntry">
+															<span class="glyphicon glyphicon-minus"></span>
+														</button>
+													</div>														
+												</div><!-- .table-responsive -->
+											</div><!-- .form-group -->
+										</div> <!-- panel-body -->
+									</div> <!-- panel-collapse collapse -->					
+								</div><!-- .panel .panel-default -->
+
+
+
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapse_4">
+												Education
+											</a>
+										</h4>
+									</div><!-- .panel-heading -->
+
+									<div id="collapse_4" class="panel-collapse collapse">
+						      			<div class="panel-body">
+											<div class="form-group unuelement-table">
+												<div class="table-responsive">
+												  <table class="table">
+												    <thead>
+											          <tr>
+											            <th>University (name, place and country)</th>
+											            <th>From</th>
+														<th>To</th>
+											            <th>Degrees and distinctions</th>
+											            <th>Main course of study</th>
+											          </tr>
+											        </thead>
+											        <tbody>
+														<tr>
+															<td><input type="text" class="form-control"></td>
+															<td><input type="text" placeholder="yyyy" size="2" maxlength="4" class="form-control"></td>
+															<td><input type="text" placeholder="yyyy" size="2" maxlength="4" class="form-control"></td>
+															<td><input type="text" class="form-control"></td>
+															<td><input type="text" class="form-control"></td>
+														</tr>
+													</tbody>
+												  </table>
+												  <div class="unuTableButton slightShift">
+													<button class="unuAddTableEntry">
+														<span class="glyphicon glyphicon-plus"></span>
+													</button>
+													<button class="unuRemoveTableEntry">
+														<span class="glyphicon glyphicon-minus"></span>
+													</button>
+												  </div>
+												</div><!-- table-responsive -->
+											</div><!-- .form-group -->
+
+										</div> <!-- panel-body -->
+									</div> <!-- panel-collapse collapse -->					
+								</div><!-- .panel .panel-default -->
+
+
+
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapse_5">
+												Employment record
+											</a>
+										</h4>
+									</div><!-- .panel-heading -->
+
+									<div id="collapse_5" class="panel-collapse collapse">
+										<div class="panel-body">
+											<span class="glyphicon glyphicon-comment" data-toggle="tooltip" data-placement="left" title="Starting with your present employment, list in reverse order every position you have held. Include service in the armed forces."></span>
+
+
+											<div id="accordionJobs" class="panel-group"> <!-- all records -->
+												<div class="panel panel-default unuelement-section">
+													<div class="panel-heading">
+														<h4 class="panel-title">
+															<a data-toggle="collapse" data-parent="#accordionJobs" href="#job_1">Record 1</a>
+														</h4>
+													</div><!-- .panel-heading -->
+
+													<div id="job_1" class="panel-collapse collapse in">
+											      		<div class="panel-body">
+															<div class="form-group">
+																<label for="jobFrom" class="col-sm-3 control-label">From</label>
+																<div class="col-sm-9">
+																	<input type="text" placeholder="mm/yyyy" class="form-control" id="jobFrom">
+																</div>
+															</div><!-- .form-group -->
+															<div class="form-group">
+																<label for="jobTo" class="col-sm-3 control-label">To</label>
+																<div class="col-sm-9">
+																	<input type="text" placeholder="mm/yyyy" class="form-control" id="jobTo">
+																</div>
+															</div><!-- .form-group -->
+															<div class="form-group">
+																<label for="jobTitle" class="col-sm-3 control-label">Exact title of your post</label>
+																<div class="col-sm-9">
+																	<input type="text" class="form-control" id="jobTitle">
+																</div>
+															</div><!-- .form-group -->
+															<div class="form-group">
+																<label for="jobEmployer" class="col-sm-3 control-label">Employer name and address</label>
+																<div class="col-sm-9">
+																	<input type="text" class="form-control" id="jobEmployer">
+																</div>
+															</div><!-- .form-group -->
+															<div class="form-group">
+																<label for="jobSupervisor" class="col-sm-3 control-label">Name of supervisor</label>
+																<div class="col-sm-9">
+																	<input type="text" class="form-control" id="jobSupervisor">
+																</div>
+															</div><!-- .form-group -->
+															<div class="form-group">
+																<label for="jobDuties" class="col-sm-3 control-label">Duties and achievements</label>
+																<div class="col-sm-9">
+																	<textarea rows="4" class="form-control" id="jobDuties"></textarea>
+																</div>
+															</div><!-- .form-group -->
+														</div> <!-- .panel-body-->
+													</div> <!-- .panel-collapse -->								
+												</div><!-- .panel-default -->
+											</div> <!-- panel-group -->
+											<div class="unuSectionButton">
+												<button class="unuAddSectionEntry" >
+													<span class="glyphicon glyphicon-plus"></span>
+												</button>
+												<button class="unuRemoveSectionEntry" >
+													<span class="glyphicon glyphicon-minus"></span>
+												</button>
+											</div>
+										</div> <!-- panel-body -->
+									</div><!-- .panel-collapse -->
+								</div><!-- .panel-default -->
+
+
+
+
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion" href="#collapse_6">
+												References
+											</a>
+										</h4>
+									</div><!-- .panel-heading -->
+
+									<div id="collapse_6" class="panel-collapse collapse">
+										<div class="panel-body">
+											<span class="glyphicon glyphicon-comment" data-toggle="tooltip" data-placement="left" title="List three persons, not related to you, who are familiar with your character and qualifications. Do not repeat the names of supervisors already listed under the EMPLOYMENT section, above."></span>
+
+
+											<div class="form-group unuelement-table">
+												<div class="table-responsive">
+												  <table class="table">
+												    <thead>
+											          <tr>
+											            <th>Title and full name</th>
+											            <th>Postal address and contact email</th>
+											            <th>Profession</th>
+											          </tr>
+											        </thead>
+											        <tbody>
+														<tr>
+															<td><input id="referenceName" type="text" class="form-control"></td>
+															<td><input id="referenceAddress" type="text" class="form-control"></td>
+															<td><input id="referenceProfession" type="text" class="form-control"></td>
+														</tr>
+													</tbody>
+												  </table>
+												  <div class="unuTableButton slightShift">
+													<button class="unuAddTableEntry" >
+														<span class="glyphicon glyphicon-plus"></span>
+													</button>
+													<button class="unuRemoveTableEntry" >
+														<span class="glyphicon glyphicon-minus"></span>
+													</button>
+												  </div>
+												</div><!-- table-responsive-->
+											</div><!-- .form-group -->
+
+										</div> <!-- panel-body -->
+									</div> <!-- panel-collapse collapse -->
+
+								</div><!-- .panel .panel-default -->
+							</div><!--panel-group" -->
+
+
+						<button id="pdfGenerate" style="margin-top: 10px;" class="button btn btn-primary">Generate pdf</button>
+					</form>
+				</div>
+        	</div>
+			<footer>
+				<p class="pull-right"></p>
+				<p> 2014 United Nations University, Campus Computing Centre, Tokyo </p>
+				<img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png">
+			</footer>
+        </div> <!-- containter-->
+		<script src='http://code.jquery.com/jquery-2.1.1.min.js'></script>
+		<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+		<script src="../../jspdf.min.js"></script>
+		<script src="../../jquery.UNUGeneratePDF.js"></script>
+		<script>
+		(function($){
+			$("#historyApplicationForm").UNUGeneratePDF();
+
+			$("#pdfGenerate").on('click', function(event){
+					$("#historyApplicationForm").UNUGeneratePDF('generatePDF');
+					event.preventDefault();
+	   		});
+		})(jQuery);
+   		</script>
+	</body>
+</html>
