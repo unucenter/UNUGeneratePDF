@@ -7,12 +7,14 @@
 ## Requirements
 
 [jQuery](http://jquery.com/) >= 1.9
+
 [Bootstrap](http://getbootstrap.com/) >= 3.0.0
+
 [jsPDF](https://github.com/MrRio/jsPDF) >= 1.0.209
 
 ## Installation
 
-Clone from source, [download](http://unucenter.github.io/UNUGeneratePDF/master/jquery.UNUGeneratePDF.js)
+Clone from source, [download](https://github.com/unucenter/UNUGeneratePDF/master/jquery.UNUGeneratePDF.js)
 
 ## Usage
 
