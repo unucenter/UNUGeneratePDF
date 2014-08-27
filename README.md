@@ -71,7 +71,7 @@ Please use the following CSS classes which determine the data type (for the pars
 * `unuelement-input` – for input or textarea,
 * `unuelement-table` – for table,
 * `unuelement-question` – for radio button
-* `unuelement-section` – for compounded data,
+* `unuelement-section` – for compound data,
 * `unuelement-question` – for question
 
 Please use the following CSS classes for dynamically adding or removing HTML node :
@@ -84,7 +84,7 @@ Do take a look at [demo file source](http://unucenter.github.io/UNUGeneratePDF/i
 
 You can pass an options object on UNUGeneratePDF initialization.
 
-```html
+```javascript
     $('#yourForm').UNUGeneratePDF({
           outputFileName: "personalHistory",
           image64: "data:image/png;base64,iVBORwggg==",
@@ -114,5 +114,6 @@ Possible options are:
 
 ## License
 Copyright (c) 2014 United Nations University, Tokyo.
+
 Code source licensed under the MIT license.
-Content of the project licensed under CC BY-NC-SA.  
+Content licensed under CC BY-NC-SA.  
