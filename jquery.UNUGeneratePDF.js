@@ -1,22 +1,22 @@
 (function($){
 
 
-	var opts;
+  var opts;
 
-	$.fn.UNUGeneratePDF = function(options){
+  $.fn.UNUGeneratePDF = function(options){
 
-		// generate the pdf
-		if( options == 'generatePDF'){
-			generatePDF(this);
-		}
+    // generate the pdf
+    if( options == 'generatePDF'){
+      generatePDF(this);
+    }
 
-		// initialization
-		else{
-			opts = $.extend( {}, $.fn.UNUGeneratePDF.defaults, options );
+    // initialization
+    else{
+      opts = $.extend( {}, $.fn.UNUGeneratePDF.defaults, options );
       initialize( this );
-		}
-		return this;
-	};
+    }
+    return this;
+  };
 
 
   function initialize(e){
@@ -61,119 +61,134 @@
   }
 
 
-	function generatePDF(e){
-		jspdf = new jsPDF();
-		jspdf.setProperties(opts.metadata);
-		if( opts.image64 ){
-			jspdf.addImage( opts.image64, 'PNG', 80, 15, 60, 18);
-			opts.initY = 50;
-		}
-		var doc = new Document("", $.extend( {}, opts, {jspdf:jspdf } ) );
-   		var allPanels = $(e).find( "> .panel-group > .panel-default");
-   		parse(doc, $(allPanels) );
-   		doc.render( 0 );
-   		jspdf.save( opts.outputFileName + ".pdf");
-	}
+  function generatePDF(e){
+    jspdf = new jsPDF();
+    jspdf.setProperties(opts.metadata);
+    if( opts.image64 ){
+      jspdf.addImage( opts.image64, 'PNG', 80, 15, 60, 18);
+      opts.initY = 50;
+    }
+    var doc = new Document("", $.extend( {}, opts, {jspdf:jspdf } ) );
+    var allPanels = $(e).find( "> .panel-group > .panel-default");
+    parse(doc, $(allPanels) );
 
-	function parse( doc, panels ){
-		var parseTable = function( element ){
-			var header = [], body = [];
-			$(element).find("thead tr").children().each( function(){
-				header.push( $( this ).text() );
-			});
-			$(element).find("tbody tr").each( function(){
-				var row = [], counter=0;
-				$.each( $(this).children(), function(){
-					row.push( {title:header[counter], data: $(this).find('input').val()});
-					counter++;
-				});
-				counter = 0;
-				body.push( row );
-			});
-			return body;
-		}
+    if(opts.footer){
+      var footer = new Section("");
+      var content = opts.footer.description;
+      footer.add( new Input( content, "" ) );
 
-		$(panels).each(function(){
-			var sectionName = $.trim( $(this).find("> div.panel-heading .panel-title a").text() );
-			var section = new Section( sectionName );
+      var fields = new Section("");
+      $.each( opts.footer.fields, function(i,el){
+        fields.add( new Input( this, "  ") );
+      });
+      footer.add(fields);
+      doc.add(footer);
+    }
 
-			$(this).find("[class*='unuelement-']").each(function(){
+    doc.render( 0 );
+    jspdf.save( opts.outputFileName + ".pdf");
+  }
 
-				var elementSemantic = $(this).attr('class').match(/unuelement-(\w+)/)[1];
+  function parse( doc, panels ){
+    var parseTable = function( element ){
+      var header = [], body = [];
+      $(element).find("thead tr").children().each( function(){
+        header.push( $( this ).text() );
+      });
+      $(element).find("tbody tr").each( function(){
+        var row = [], counter=0;
+        $.each( $(this).children(), function(){
+          row.push( {title:header[counter], data: $(this).find('input').val()});
+          counter++;
+        });
+        counter = 0;
+        body.push( row );
+      });
+      return body;
+    }
 
-				if( elementSemantic == "input"){
-					var label = $(this).find("label").text(), value = $.trim($(this).find(".form-control").val());
-					var leafElement = new Input( label, value ) ;
-					section.add( leafElement );
-				}
-				else if( elementSemantic == "radio"){
-					var checkedOne = $(this).find("input:checked");
-					var label = $(this).find(">label").text(), value;
+    $(panels).each(function(){
+      var sectionName = $.trim( $(this).find("> div.panel-heading .panel-title a").text() );
+      var section = new Section( sectionName );
 
-					value = (checkedOne.length > 0) ? $(checkedOne).val() : "";
-					var leafElement = new Input( label, value ) ;
-					section.add( leafElement );
-				}
-				else if( elementSemantic == "question"){
+      $(this).find("[class*='unuelement-']").each(function(){
 
-					var question = new Section("");
-					var content = $(this).find("> p").text();
-					var response = $(this).find("input[type=radio]:checked").val();
-					question.add( new Input( content, response ) );
+        var elementSemantic = $(this).attr('class').match(/unuelement-(\w+)/)[1];
 
-					var table = $(this).find("> div table"); 
+        if( elementSemantic == "input"){
+          var label = $(this).find("label").text(), value = $.trim($(this).find(".form-control").val());
+          var leafElement = new Input( label, value ) ;
+          section.add( leafElement );
+        }
+        else if( elementSemantic == "radio"){
+          var checkedOne = $(this).find("input:checked");
+          var label = $(this).find(">label").text(), value;
 
-					// there is a table
-					if( response!='no' && table.length > 0 ){
-						question.add( new Table( "", parseTable( table )  ) ); 
-					}
-					else{
-						var complement = new Section("");
-						var input = $(this).find("> div .form-control");
-						var complementLabel = $(input).siblings("p").text(), complementValue = $(input).val();
-						if( complementValue ){
-							complement.add( new Input( complementLabel, complementValue ) );
-							question.add(complement);
-						}
-					}
-					section.add(question);
-				}
-				else if( elementSemantic == "table"){
+          value = (checkedOne.length > 0) ? $(checkedOne).val() : "";
+          var leafElement = new Input( label, value ) ;
+          section.add( leafElement );
+        }
+        else if( elementSemantic == "question"){
 
-					var label = $(this).find("label").text(), value = $.trim($(this).find(".form-control").val());
-					var table = new Table( label, parseTable ( this ) );
-					section.add(table);
-				}
-				else if( elementSemantic == "section"){
-					var no = $(this).find(".panel-title a").text() ;
-					var job = new Section(no);
-					$(this).find( ".form-control" ).each( function(){
-						var label = $(this).parent().siblings("label").text(), value = $(this).val();
-						var input = new Input( label, value ) ;
-						job.add( input );
-					});
-					section.add( job );
-				}
-			});
+          var question = new Section("");
+          var content = $(this).find("> p").text();
+          var response = $(this).find("input[type=radio]:checked").val();
+          question.add( new Input( content, response ) );
 
-			doc.add( section );
-		});
-	}
+          var table = $(this).find("> div table"); 
+
+          // there is a table
+          if( response!='no' && table.length > 0 ){
+            question.add( new Table( "", parseTable( table )  ) ); 
+          }
+          else{
+            var complement = new Section("");
+            var input = $(this).find("> div .form-control");
+            var complementLabel = $(input).siblings("p").text(), complementValue = $(input).val();
+            if( complementValue ){
+              complement.add( new Input( complementLabel, complementValue ) );
+              question.add(complement);
+            }
+          }
+          section.add(question);
+        }
+        else if( elementSemantic == "table"){
+
+          var label = $(this).find("label").text(), value = $.trim($(this).find(".form-control").val());
+          var table = new Table( label, parseTable ( this ) );
+          section.add(table);
+        }
+        else if( elementSemantic == "section"){
+          var no = $(this).find(".panel-title a").text() ;
+          var job = new Section(no);
+          $(this).find( ".form-control" ).each( function(){
+            var label = $(this).parent().siblings("label").text(), value = $(this).val();
+            var input = new Input( label, value ) ;
+            job.add( input );
+          });
+          section.add( job );
+        }
+      });
+
+      doc.add( section );
+    });
+  }
 
 
   $.fn.UNUGeneratePDF.defaults = {
-								initY:15,
-								top:15,
-								marginRight:190,
-								bottom:285,
-								marginLeft:15, 
-								offsetXNextLevel:5,
-								jumpSection:10, 
-								jumpTitle:6,
-								jumpParagraph:4,
-								outputFileName: "applicationHistory",
-								metadata:{}
-	};
+                initY:15,
+                top:15,
+                marginRight:190,
+                bottom:285,
+                marginLeft:15, 
+                offsetXNextLevel:5,
+                jumpSection:10, 
+                jumpTitle:6,
+                jumpParagraph:4,
+                outputFileName: "applicationHistory",
+                metadata:{},
+                footer:{}
+  };
 
 
 
@@ -474,13 +489,4 @@
 
   })();
 
-
-
-
-
-
-	
 })(jQuery);
-
-
-
