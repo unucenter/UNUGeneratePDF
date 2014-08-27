@@ -1,6 +1,6 @@
 #UNUGeneratePDF
 
-A jQuery plugin which allows to generate a PDF file *client-side from a HTML form.
+A jQuery plugin which allows to generate a PDF file **client-side** from a HTML form.
 
 Can for example be used for rendering the filled data of job applicants.
 
