@@ -115,5 +115,6 @@ Possible options are:
 ## License
 Copyright (c) 2014 United Nations University, Tokyo.
 
-Code source licensed under the MIT license.
+Source code licensed under the MIT license.
+
 Content licensed under CC BY-NC-SA.  
