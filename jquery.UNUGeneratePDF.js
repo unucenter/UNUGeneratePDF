@@ -69,10 +69,24 @@
 			opts.initY = 50;
 		}
 		var doc = new Document("", $.extend( {}, opts, {jspdf:jspdf } ) );
-   		var allPanels = $(e).find( "> .panel-group > .panel-default");
-   		parse(doc, $(allPanels) );
-   		doc.render( 0 );
-   		jspdf.save( opts.outputFileName + ".pdf");
+   	var allPanels = $(e).find( "> .panel-group > .panel-default");
+   	parse(doc, $(allPanels) );
+
+    if(opts.footer){
+      var footer = new Section("");
+      var content = opts.footer.description;
+      footer.add( new Input( content, "" ) );
+
+      var fields = new Section("");
+      $.each( opts.footer.fields, function(i,el){
+        fields.add( new Input( this, "  ") );
+      });
+      footer.add(fields);
+      doc.add(footer);
+    }
+
+    doc.render( 0 );
+   	jspdf.save( opts.outputFileName + ".pdf");
 	}
 
 	function parse( doc, panels ){
@@ -172,7 +186,8 @@
 								jumpTitle:6,
 								jumpParagraph:4,
 								outputFileName: "applicationHistory",
-								metadata:{}
+								metadata:{},
+                footer:{}
 	};
 
 

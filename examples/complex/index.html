@@ -317,7 +317,6 @@
 												  </div>
 												</div><!-- .unuelement-question -->
 
-
 												<div class="unuelement-question col-sm-11">
 													<p>Have you previously submitted an application for employment and/or undergone any tests with UNU?</p>
 													<label class="radio-inline">
@@ -329,6 +328,19 @@
 													<div style="display:none;">
 														<p>When:</p>
 														<textarea class="form-control"></textarea>
+													</div>
+												</div><!-- .unuelement-question -->
+
+												<div class="unuelement-question col-sm-11">
+													<p>Have you ever been arrested, indicted, or summoned into court as a defendant in a criminal proceeding, or convicted, fined or imprisoned for the violation of any law (excluding minor traffic violations)?</p>
+													<label class="radio-inline">
+														<input type="radio" name="convinced" value="yes"> Yes
+													</label>
+													<label class="radio-inline">
+								  						<input type="radio" name="convinced" value="no" checked> No
+													</label>
+													<div style="display:none;">
+														<p>Provide a statement as to the full particulars of each case and attach it in a sealed envelope marked "confidential".</p>
 													</div>
 												</div><!-- .unuelement-question -->
 
@@ -653,7 +665,11 @@
 						author: 'C3 UNU, Tokyo',
 						keywords: 'application, HTML form, pdf',
 						creator: 'sakai@unu.edu'
-						}
+					},
+					footer:{
+						description: "I certify that the statements made by me in answer to the foregoing questions are true, complete and correct to the best of my knowledge and belief. I understand that any misrepresentation or material omission made on a Personal History form or other document requested by United Nations University renders a staff member liable to instant termination and dismissal.",
+						fields :[ "Date (dd/mm/yyyy)", "Signature"]
+					}
 					});
 
 			$("#pdfGenerate").on('click', function(event){
