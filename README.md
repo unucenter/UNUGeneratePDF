@@ -21,52 +21,60 @@ Can for example be used for rendering the filled data of job applicants.
 Clone from source.
 
 ## Usage
-1. Require jQuery
-2. Require Bootstrap and its accordion and form-horizontal HTML and classes structure 
+1. Require jQuery-
+2. Require Bootstrap and its accordion and form-horizontal HTML and classes structure.
 
 ```html
-    <form id="history-form" class="form-horizontal">
-      <div id="accordion" class="panel-group">
+<form id="history-form" class="form-horizontal">
+  <div id="accordion" class="panel-group">
 
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse_1">
-                  Personal data
-                </a>
-              </h4>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse_1">
+              Personal data
+            </a>
+          </h4>
+        </div>
+
+        <div id="collapse_1" class="panel-collapse collapse">
+              <div class="panel-body">
+            <div class="form-group unuelement-input">
+              <label for="familyName" class="col-sm-2 control-label">Family name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="familyName">
+              </div>
             </div>
-
-            <div id="collapse_1" class="panel-collapse collapse">
-                  <div class="panel-body">
-                <div class="form-group unuelement-input">
-                  <label for="familyName" class="col-sm-2 control-label">Family name</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="familyName">
-                  </div>
-                </div>
-                <div class="form-group unuelement-input">
-                  <label for="firstName" class="col-sm-2 control-label">First name</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="firstName">
-                  </div>
-                </div>
+            <div class="form-group unuelement-input">
+              <label for="firstName" class="col-sm-2 control-label">First name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="firstName">
               </div>
             </div>
           </div>
+        </div>
       </div>
-      <button id="pdfGenerate" class="button btn btn-primary">Generate pdf</button>
-    </form>
-    <script>
-    (function($){
-      $("#historyApplicationForm").UNUGeneratePDF();
-      $("#pdfGenerate").on('click', function(event){
-          $("#historyApplicationForm").UNUGeneratePDF('generatePDF');
-          event.preventDefault();
-        });
-    })(jQuery);
-    </script>
+  </div>
+  <button id="pdfGenerate" class="button btn btn-primary">Generate pdf</button>
+</form>
+<script>
+(function($){
+  $("#historyApplicationForm").UNUGeneratePDF();
+  $("#pdfGenerate").on('click', function(event){
+      $("#historyApplicationForm").UNUGeneratePDF('generatePDF');
+      event.preventDefault();
+    });
+})(jQuery);
+</script>
 ```
+Please use the following CSS classes which determine the data type (for the parsing process) :
+* `unuelement-input` – for input or textarea,
+* `unuelement-table` – for table,
+* `unuelement-section` – for compounded data,
+* `unuelement-question` – for question
+
+Please use the following CSS classes for dynamically adding or removing HTML node :
+* `unuelement-input` – for input or textarea,
 
 Do take a look at [demo file source](http://unucenter.github.io/UNUGeneratePDF/index.html) to understand usage.
 
@@ -74,7 +82,7 @@ Do take a look at [demo file source](http://unucenter.github.io/UNUGeneratePDF/i
 
 You can pass an options object on UNUGeneratePDF initialization.
 
-    $('.yourForm').UNUGeneratePDF({
+    $('#yourForm').UNUGeneratePDF({
           outputFileName: "personalHistory",
           image64: "data:image/png;base64,iVBORwggg==",
           metadata:{
@@ -89,13 +97,13 @@ You can pass an options object on UNUGeneratePDF initialization.
 Possible options are:
 
 * `outputFileName` – name of the generated file – *string*,
-* `image64` – base 64 encoded PNG image () – *string*,
-* `metadata` – how often to save field values to localStorage (milliseconds) – *object*
-  ** `title` – name of the generated file – *string*,
-  ** `subject` – base 64 encoded PNG image () – *string*,
-  ** `author` – how often to save field values to localStorage (milliseconds) – *string*
-  ** `keywords` – how often to save field values to localStorage (milliseconds) – *string*
-  ** `creator` – how often to save field values to localStorage (milliseconds) – *string*
+* `image64` – base64 encoded PNG image (80x235) – *string*,
+* `metadata` – PDF metadata – *object*
+  * `title` – document title – *string*,
+  * `subject` – document suject – *string*,
+  * `author` – document author – *string*,
+  * `keywords` – document keywords – *string*,
+  * `creator` – document creator – *string*
 
 
 ## Dependencies
