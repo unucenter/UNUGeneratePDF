@@ -111,8 +111,8 @@ Possible options are:
   * `author` – document author – *string*,
   * `keywords` – document keywords – *string*,
   * `creator` – document creator – *string*
-* `footer`– PDF metadata – *object*
-  * `description` – confirmation or statement - *string*,
+* `footer`– statement – *object*
+  * `description` – content of the statement - *string*,
   * `fields` - inputs - *array of strings*
 
 ## Dependencies
