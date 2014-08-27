@@ -94,20 +94,26 @@ $('#yourForm').UNUGeneratePDF({
         author: 'C3 UNU, Tokyo',
         keywords: 'application, HTML form, pdf',
         creator: 'sakai@unu.edu'
-        }
+        },
+      footer:{
+        description: "I understand that any misrepresentation made on a the prensent form renders a staff member liable to instant termination and dismissal.",
+        fields:['Date', 'Signature']
+    }
   });
 ```
 Possible options are:
 
 * `outputFileName` – name of the generated file – *string*,
 * `image64` – base64 encoded PNG image (80x235) – *string*,
-* `metadata` – PDF metadata – *object*
+* `metadata` – PDF metadata – *object*,
   * `title` – document title – *string*,
   * `subject` – document suject – *string*,
   * `author` – document author – *string*,
   * `keywords` – document keywords – *string*,
   * `creator` – document creator – *string*
-
+* `footer`– PDF metadata – *object*
+  * `description` – confirmation or statement - *string*,
+  * `fields` - inputs - *array of strings*
 
 ## Dependencies
 [jsPDF](https://github.com/MrRio/jsPDF)
