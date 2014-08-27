@@ -21,7 +21,7 @@ Can for example be used for rendering the filled data of job applicants.
 Clone from source.
 
 ## Usage
-1. Require jQuery-
+1. Require jQuery.
 2. Require Bootstrap and its accordion and form-horizontal HTML and classes structure.
 
 ```html
@@ -59,9 +59,9 @@ Clone from source.
 </form>
 <script>
 (function($){
-  $("#historyApplicationForm").UNUGeneratePDF();
+  $("#history-form").UNUGeneratePDF();
   $("#pdfGenerate").on('click', function(event){
-      $("#historyApplicationForm").UNUGeneratePDF('generatePDF');
+      $("#history-form").UNUGeneratePDF('generatePDF');
       event.preventDefault();
     });
 })(jQuery);
@@ -70,11 +70,13 @@ Clone from source.
 Please use the following CSS classes which determine the data type (for the parsing process) :
 * `unuelement-input` – for input or textarea,
 * `unuelement-table` – for table,
+* `unuelement-question` – for radio button
 * `unuelement-section` – for compounded data,
 * `unuelement-question` – for question
 
 Please use the following CSS classes for dynamically adding or removing HTML node :
-* `unuelement-input` – for input or textarea,
+* `unuTableButton` – wrapper for adding and removing table entries,
+* `unuSectionButton` – wrapper for adding and removing section records
 
 Do take a look at [demo file source](http://unucenter.github.io/UNUGeneratePDF/index.html) to understand usage.
 
@@ -82,6 +84,7 @@ Do take a look at [demo file source](http://unucenter.github.io/UNUGeneratePDF/i
 
 You can pass an options object on UNUGeneratePDF initialization.
 
+```html
     $('#yourForm').UNUGeneratePDF({
           outputFileName: "personalHistory",
           image64: "data:image/png;base64,iVBORwggg==",
@@ -93,7 +96,7 @@ You can pass an options object on UNUGeneratePDF initialization.
             creator: 'sakai@unu.edu'
             }
       });
-
+```
 Possible options are:
 
 * `outputFileName` – name of the generated file – *string*,
