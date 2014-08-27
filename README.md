@@ -70,7 +70,7 @@ Clone from source.
 Please use the following CSS classes which determine the data type (for the parsing process) :
 * `unuelement-input` – for input or textarea,
 * `unuelement-table` – for table,
-* `unuelement-question` – for radio button
+* `unuelement-radio` – for radio button,
 * `unuelement-section` – for compound data,
 * `unuelement-question` – for question
 
