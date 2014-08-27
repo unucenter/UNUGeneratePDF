@@ -85,17 +85,17 @@ Do take a look at [demo file source](http://unucenter.github.io/UNUGeneratePDF/i
 You can pass an options object on UNUGeneratePDF initialization.
 
 ```javascript
-    $('#yourForm').UNUGeneratePDF({
-          outputFileName: "personalHistory",
-          image64: "data:image/png;base64,iVBORwggg==",
-          metadata:{
-            title: 'Personal history document',
-            subject: 'Personal history PDF generated from a HTML form',
-            author: 'C3 UNU, Tokyo',
-            keywords: 'application, HTML form, pdf',
-            creator: 'sakai@unu.edu'
-            }
-      });
+$('#yourForm').UNUGeneratePDF({
+      outputFileName: "personalHistory",
+      image64: "data:image/png;base64,iVBORwggg==",
+      metadata:{
+        title: 'Personal history document',
+        subject: 'Personal history PDF generated from a HTML form',
+        author: 'C3 UNU, Tokyo',
+        keywords: 'application, HTML form, pdf',
+        creator: 'sakai@unu.edu'
+        }
+  });
 ```
 Possible options are:
 
