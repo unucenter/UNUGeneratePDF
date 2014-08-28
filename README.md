@@ -94,12 +94,23 @@ $('#yourForm').UNUGeneratePDF({
         author: 'C3 UNU, Tokyo',
         keywords: 'application, HTML form, pdf',
         creator: 'sakai@unu.edu'
-        },
-      footer:{
-        description: "I understand that any misrepresentation made on a the prensent form renders a staff member liable to instant termination and dismissal.",
+      },
+      statement:{
+        content: "I understand that any misrepresentation made on a the prensent form renders a staff member liable to instant termination and dismissal.",
         fields:['Date', 'Signature']
-    }
+      },
+      layout:{
+        top:15,
+        marginRight:180,
+        bottom:280,
+        marginLeft:20, 
+        offsetXNextLevel:10,
+        jumpSection:12,
+        jumpTitle:6,
+        jumpParagraph:5
+      }
   });
+
 ```
 Possible options are:
 
@@ -111,9 +122,18 @@ Possible options are:
   * `author` – document author – *string*,
   * `keywords` – document keywords – *string*,
   * `creator` – document creator – *string*
-* `footer`– statement – *object*
-  * `description` – content of the statement - *string*,
+* `statement`– statement – *object*,
+  * `content` – content of the statement - *string*,
   * `fields` - inputs - *array of strings*
+* `layout`– document layout – *object*
+  * `top` – margin top - *integer*,
+  * `marginRight` – margin right - *integer*,
+  * `bottom` – margin bottom - *integer*,
+  * `marginLeft` – margin left - *integer*,
+  * `offsetXNextLevel` – horizontal hierachical shift - *integer*,
+  * `jumpSection` – section jump - *integer*,
+  * `jumpTitle` – title jump - *integer*,
+  * `jumpParagraph` – paragraph jump - *integer*  
 
 ## Dependencies
 [jsPDF](https://github.com/MrRio/jsPDF)

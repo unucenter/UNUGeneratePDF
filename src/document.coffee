@@ -33,7 +33,8 @@ class Section extends Document
     super( name )
   
   render: ( currentLevel ) ->
-    Document.CURRENTY += Document.SETTINGS.jumpSection-currentLevel*5
+    if @name
+      Document.CURRENTY += Document.SETTINGS.jumpSection-currentLevel*Document.SETTINGS.jumpSection/1.8
 
     Document.SETTINGS.jspdf.setFontSize(12-currentLevel*0.4)
     Document.SETTINGS.jspdf.setFontStyle('bold')
@@ -42,8 +43,9 @@ class Section extends Document
       Document.check_space()
       Document.SETTINGS.jspdf.text( Document.SETTINGS.marginLeft + currentLevel*Document.SETTINGS.offsetXNextLevel, Document.CURRENTY, @name )
       Document.CURRENTY += Document.SETTINGS.jumpTitle-currentLevel
-    super( currentLevel+1 )
-
+      super( currentLevel+1 )
+    else
+      super( currentLevel )
 
 class Input extends Document
 
@@ -103,8 +105,12 @@ class Table extends Document
 
     # values
     Document.CURRENTY += Document.SETTINGS.jumpParagraph
-    xOffsetStartTitle = Document.SETTINGS.marginLeft + (currentLevel+1)*Document.SETTINGS.offsetXNextLevel
-    xOffsetStartData  = Document.SETTINGS.marginLeft + (currentLevel+2)*Document.SETTINGS.offsetXNextLevel
+    if @label
+      xOffsetStartTitle = Document.SETTINGS.marginLeft + (currentLevel)*Document.SETTINGS.offsetXNextLevel
+      xOffsetStartData  = Document.SETTINGS.marginLeft + (currentLevel+1)*Document.SETTINGS.offsetXNextLevel
+    else
+      xOffsetStartTitle = Document.SETTINGS.marginLeft + (currentLevel+1)*Document.SETTINGS.offsetXNextLevel
+      xOffsetStartData  = Document.SETTINGS.marginLeft + (currentLevel+2)*Document.SETTINGS.offsetXNextLevel
 
     for rows in @values
       for input in rows
