@@ -115,7 +115,7 @@ $('#yourForm').UNUGeneratePDF({
 Possible options are:
 
 * `outputFileName` – name of the generated file – *string*,
-* `image64` – base64 encoded PNG image (80x235) – *string*,
+* `image64` – base64 encoded PNG image (235x80) – *string*,
 * `metadata` – PDF metadata – *object*,
   * `title` – document title – *string*,
   * `subject` – document suject – *string*,
