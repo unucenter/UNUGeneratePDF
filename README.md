@@ -96,7 +96,7 @@ $('#yourForm').UNUGeneratePDF({
         creator: 'sakai@unu.edu'
       },
       statement:{
-        content: "I understand that any misrepresentation made on a the prensent form renders a staff member liable to instant termination and dismissal.",
+        content: "I understand that any misrepresentation made on a the present form renders a staff member liable to instant termination and dismissal.",
         fields:['Date', 'Signature']
       },
       layout:{
